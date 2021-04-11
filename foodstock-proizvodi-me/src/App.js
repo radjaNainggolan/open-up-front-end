@@ -6,7 +6,7 @@ function App() {
     <Router>
       
       <div className="App">
-            <NavBar></NavBar>
+        <NavBar></NavBar>
       </div>
     
     </Router>

@@ -5,6 +5,9 @@ module.exports = {
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+
+    
+
     screens: {
       sm: '640px',
       md: '768px',
@@ -16,6 +19,8 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
 
+      
+      amber: colors.amber,
       black: colors.black,
       white: colors.white,
       gray: colors.coolGray,
@@ -148,6 +153,7 @@ module.exports = {
       '3xl': '1.5rem',
       full: '9999px',
     },
+    
     borderWidth: {
       DEFAULT: '1px',
       0: '0px',
@@ -250,6 +256,7 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
+      karla: ['Karla'],
       serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: [
         'ui-monospace',
@@ -816,6 +823,7 @@ module.exports = {
     'disabled',
   ],
   variants: {
+    
     accessibility: ['responsive', 'focus-within', 'focus'],
     alignContent: ['responsive'],
     alignItems: ['responsive'],
@@ -847,7 +855,7 @@ module.exports = {
     borderOpacity: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
     borderRadius: ['responsive'],
     borderStyle: ['responsive'],
-    borderWidth: ['responsive'],
+    borderWidth: ['responsive' ,'hover'],
     boxDecorationBreak: ['responsive'],
     boxShadow: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus'],
     boxSizing: ['responsive'],
@@ -924,11 +932,11 @@ module.exports = {
     pointerEvents: ['responsive'],
     position: ['responsive'],
     resize: ['responsive'],
-    ringColor: ['responsive', 'dark', 'focus-within', 'focus'],
+    ringColor: ['responsive', 'dark', 'focus-within', 'focus','hover'],
     ringOffsetColor: ['responsive', 'dark', 'focus-within', 'focus'],
     ringOffsetWidth: ['responsive', 'focus-within', 'focus'],
     ringOpacity: ['responsive', 'dark', 'focus-within', 'focus'],
-    ringWidth: ['responsive', 'focus-within', 'focus'],
+    ringWidth: ['responsive', 'focus-within', 'focus' ,'hover'],
     rotate: ['responsive', 'hover', 'focus'],
     saturate: ['responsive'],
     scale: ['responsive', 'hover', 'focus'],
