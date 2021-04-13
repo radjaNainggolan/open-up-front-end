@@ -2,9 +2,12 @@ import {Link} from 'react-router-dom';
 import { useState , useEffect } from 'react';
 const NavBar = () => {
     const [logedIn , setLogedIn] = useState(false);
-    const handleClick = () => {
+    const login = () => {
         setLogedIn(true);
     };
+    const logout = () => {
+        setLogedIn(false);
+    }
 
 
     return ( 
@@ -17,15 +20,15 @@ const NavBar = () => {
             </div>
             
             {logedIn === false && (
-                <div id="sign" className="ml-auto">
-                    <Link to="/sign-in" onClick={handleClick} className="btn-nav">Sign in</Link>
+                <div id="sign" className="ml-auto ">
+                    <Link to="/sign-in" onClick={login} className="btn-nav">Sign in</Link>
                     <Link to="/sign-up" className="btn-nav">Sign up</Link>
                 </div>
             )}
             {logedIn === true && (
-                <div id="sign" className="ml-auto">
-                    <Link to="/sign-in" onClick={handleClick} className="btn-nav">Profile</Link>
-                    <Link to="/sign-up" className="btn-nav">Log out</Link>
+                <div id="sign" className="ml-auto ">
+                    <Link to="/sign-in"  className="btn-nav">Profile</Link>
+                    <Link to="/sign-up" onClick={logout} className="btn-nav">Log out</Link>
                 </div>
             )}
 
