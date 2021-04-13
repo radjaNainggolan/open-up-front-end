@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom';
 const ProductsList = ({data , loa}) => {
     if(loa){
-        return <h2 className="font-karla">Loading...</h2>
+        return <h2 className="font-karla ">Loading...</h2>
     }
     
     return ( 
-        <div className=" flex-wrap flex  mt-32 mx-12">
+        <div className="grid grid-cols-4 gap-10 mt-14 mx-16 mb-16">
             {data.map( (product) => (
                 <div className="product">
                     <Link to= {`/product/${product.id}`}>
