@@ -7,14 +7,16 @@ const Search = () => {
     const [products , setProducts] = useState([]);
     const [loading , setLoading] = useState(false);
     const [currentPage , setCurrentPage] = useState(1);
-    const [productsPerPage , setProductsPerPage] = useState(2);
+    const [productsPerPage , setProductsPerPage] = useState(16);
 
-    const fetchProducts = async () => {
+     const fetchProducts = async () => {
         setLoading(true);
         const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setProducts(res.data);
         setLoading(false);
     }
+
+    
 
     useEffect( () => {
         fetchProducts();
@@ -30,16 +32,22 @@ const Search = () => {
     
 
     return ( 
-        <div>
-            <div className="h-28 rounded-2xl bg-gradient-to-br from-amber-600 to-red-400 mt-16 ">
-                <input type="text" className="ml-16 outline-none my-10 bg-white w-80 px-2 rounded-2xl font-karla"/>
-                <a href="" className="rounded-2xl bg-white px-7 py-1 ml-10 font-karla font-semibold border-0 text-red-500">Search</a>
+        <div className="">
+            <div className="h-28 rounded-2xl bg-gradient-to-br flex from-amber-400 to-red-400 mt-8 ">
+                <div>
+                    <input type="text" className="m-3 w-60 outline-none  bg-white px-2 rounded-xl font-karla sm:w-80"/><br/>
+                </div>
+                <div className="">
+                    <button className="rounded-xl m-3 transform delay-100 bg-white px-5 focus:outline-none font-karla font-semibold text-red-500 hover:ring-2 hover:ring-red-500">
+                        Find
+                    </button>
+                </div>
             </div>
 
-            <div className="ml-12">
+            <div className="">
                 {products.length > 0 && <ProductsList data={currentProducts} loa={loading}></ProductsList> }
             </div>
-            <div>
+            <div className="flex justify-items-center">
                 <ReactPaginate
                 previousLabel={"Previous"}
                 nextLabel={"Next"}
@@ -47,7 +55,7 @@ const Search = () => {
                 pageRangeDisplayed={4}
                 pageCount={pages}
                 onPageChange={paginate}
-                containerClassName="flex-wrap flex mb-16 ml-72"
+                containerClassName="flex flex-wrap mb-16 ml-12 sm:ml-10"
                 previousClassName="paging"
                 nextClassName="paging "
                 nextLinkClassName="outline-none"
@@ -55,6 +63,7 @@ const Search = () => {
                 activeClassName="paging bg-red-500"
                 activeLinkClassName="otline-none"
                 pageClassName="paging"
+
                 pageLinkClassName="outline-none"
                 breakClassName="ml-5"
                 >

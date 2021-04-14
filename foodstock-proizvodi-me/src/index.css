@@ -3,19 +3,28 @@
 @tailwind components;
 
 .btn-nav{
-   @apply mx-10 px-5 bg-white text-red-500 
-   font-bold rounded-xl transform delay-100 hover:ring-red-500 hover:ring-2
+   @apply mx-2 px-2 sm:mx-2 sm:px-2 md:mx-5 md:px-2 bg-white text-red-500 
+   font-semibold rounded-xl transform delay-100 hover:ring-red-500 hover:ring-2
    
    
+}
+
+.drop-down-btn{
+   @apply rounded-lg transform w-10 delay-100 bg-white font-karla font-semibold hover:ring-2
+   hover:ring-amber-500 text-center text-amber-500
+}
+.nav-bar{
+   @apply bg-amber-500 rounded-b-xl p-3 items-center  
+   flex m-auto font-karla text-lg text-white border-b-4 border-red-500
 }
 
 .product{
-   @apply shadow-lg transform hover:-translate-y-2 font-karla bg-gradient-to-br from-amber-600 to-red-400 
-   rounded-2xl w-60 h-60 delay-100 duration-100 hover:ring-4 ring-2 ring-red-500
+   @apply shadow-lg transform hover:-translate-y-2 font-karla bg-gradient-to-br from-amber-400 to-red-400 
+   rounded-2xl  w-60 h-80 delay-100 duration-100 hover:ring-4 ring-2 ring-red-500
 }
 
 .paging {
-   @apply bg-amber-500 rounded-xl px-2 ml-5 text-white font-karla font-semibold;
+   @apply justify-items-center bg-amber-500 rounded-xl px-2 ml-5 text-white font-karla font-semibold
 }
 
 @tailwind utilities;
