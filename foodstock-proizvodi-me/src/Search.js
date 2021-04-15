@@ -1,39 +1,31 @@
 import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 import ProductsList from './ProductsList';
-
+import useData from './useData';
 import ReactPaginate from 'react-paginate';
+import {Link} from 'react-router-dom';
 const Search = () => {
-    const [products , setProducts] = useState([]);
-    const [loading , setLoading] = useState(false);
-    const [currentPage , setCurrentPage] = useState(1);
+    
+    const [currentPage , setCurrentPage] = useState(0);
     const [productsPerPage , setProductsPerPage] = useState(16);
-
-     const fetchProducts = async () => {
-        setLoading(true);
-        const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        setProducts(res.data);
-        setLoading(false);
-    }
-
+    const {products , loading} = useData('http://localhost:8000/products/');
+    //console.log(products);
+    
     
 
-    useEffect( () => {
-        fetchProducts();
-    }, []);
-   
-    //console.log(products);
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
+    //console.log(currentProducts);
     const pages = Math.ceil(products.length/productsPerPage);
+
     const paginate = ({selected}) => setCurrentPage(selected);
     
     
 
     return ( 
         <div className="">
-            <div className="search">
+            <div className="search ">
                 <div>
                     <input type="text" className="input"/><br/>
                 </div>
@@ -41,6 +33,12 @@ const Search = () => {
                     <button className="find-btn">
                         Find
                     </button>
+                </div>
+                <br/>
+                <div className="mt-3">
+                    <Link to="/new-product-form" className="find-btn py-1">
+                        New product
+                    </Link>
                 </div>
             </div>
 

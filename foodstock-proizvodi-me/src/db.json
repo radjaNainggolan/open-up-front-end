@@ -1,0 +1,86 @@
+{
+  "products": [
+    {
+      "briefDescription": "Teleće meso",
+      "category": "Teletina",
+      "currentPrice": {
+        "date": "2021-04-14",
+        "discountAmount": "10.80",
+        "discountEndDate": "20.04.",
+        "discountPrice": "9.99",
+        "discountStartDate": "06.04.",
+        "regularPrice": "11.20",
+        "store": "Voli"
+      },
+      "description": "",
+      "name": "Teleći but bez kosti",
+      "nutriScore": "A",
+      "nutritionalValues": {
+        "carbs": -1,
+        "energy": "",
+        "fats": -1,
+        "fibers": -1,
+        "proteins": -1,
+        "salt": -1,
+        "saturatedFats": -1,
+        "sugar": -1
+      },
+      "status": "draft"
+    },
+    {
+      "briefDescription": "Junece meso",
+      "category": "Junetina",
+      "currentPrice": {
+        "date": "2021-04-14",
+        "discountAmount": "10.80",
+        "discountEndDate": "20.04.",
+        "discountPrice": "9.99",
+        "discountStartDate": "06.04.",
+        "regularPrice": "11.20",
+        "store": "Voli"
+      },
+      "description": "",
+      "name": "Juneci but bez kosti",
+      "nutriScore": "A",
+      "nutritionalValues": {
+        "carbs": -1,
+        "energy": "",
+        "fats": -1,
+        "fibers": -1,
+        "proteins": -1,
+        "salt": -1,
+        "saturatedFats": -1,
+        "sugar": -1
+      },
+      "status": "draft"
+    },
+    {
+      "briefDescription": "ne pusta te da odrastes",
+      "category": "Keks",
+      "currentPrice": {
+        "date": "2015-05-30",
+        "discountAmount": "5.5",
+        "discountEndDate": "2017-02-02",
+        "discountPrice": "2.5",
+        "discountStartDate": "2017-04-05",
+        "regularPrice": "3",
+        "store": "voli"
+      },
+      "description": "nista binto",
+      "name": "Plazma",
+      "nutriScore": "B",
+      "nutritionalValues": {
+        "carbs": "0.5",
+        "energy": "17.5",
+        "fats": "27",
+        "fibers": "0.5",
+        "proteins": "2",
+        "salt": "1",
+        "saturatedFats": "5.5",
+        "sugar": "1"
+      },
+      "status": "",
+      "id": "CiSu4xY"
+    }
+  ]
+}
