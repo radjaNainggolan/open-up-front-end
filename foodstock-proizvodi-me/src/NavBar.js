@@ -18,7 +18,7 @@ const NavBar = () => {
 
     const DropDownMenu = () => {
         return (
-            <div onMouseLeave={onMenuClick} className="w-40 h-60 z-50 bg-red-500 grid justify-items-center gap-5 mt-2 xs:ml-80 absolute rounded-xl sm:hidden">
+            <div onMouseLeave={onMenuClick} className="drop-down-nav">
                 
                 <div>
                     <Link onClick={onMenuClick} to="/" className="drop-down-btn">
@@ -54,26 +54,26 @@ const NavBar = () => {
         <div>
             <nav className="nav-bar">
                 <h1 className="">Logo Foodstock</h1>
-                <div id="Links" className="ml-auto hidden sm:flex sm:flex-wrap">
+                <div id="Links" className="ml-auto hidden sm:block">
                     <Link to="/" className="btn-nav">  Home </Link>
                     <Link to="/search" className="btn-nav">Search</Link>
                     <Link to="/rewards" className="btn-nav">Rewards</Link>
                 </div>
-                <div className="xs:ml-80 sm:hidden">
+                <div className=" xxs:ml-56 xs:ml-80 sm:hidden">
                     <button onClick={onMenuClick} className=" focus:outline-none active:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
                         </svg>
                     </button>
                 </div>
                 {logedIn === false && (
-                    <div id="sign" className="hidden sm:flex">
+                    <div id="sign" className="hidden sm:block ml-auto">
                         <Link to="/log-in" onClick={login} className="btn-nav">Sign in</Link>
                         <Link to="/sign-up" className="btn-nav">Sign up</Link>
                     </div>
                 )}
                 {logedIn === true && (
-                    <div id="sign" className="hidden sm:flex">
+                    <div id="sign" className="hidden sm:block ml-auto">
                         <Link to="/log-in"  className="btn-nav">Profile</Link>
                         <Link to="/sign-up" onClick={logout} className="btn-nav">Log out</Link>
                     </div>

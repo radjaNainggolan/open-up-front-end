@@ -1,5 +1,6 @@
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 import Search from './Search';
+import ProductDetails from './ProductDetails';
 import { BrowserRouter as Router , Route , Switch} from 'react-router-dom';
 function App() {
   return (
@@ -10,6 +11,9 @@ function App() {
         <Switch>
           <Route exact path = '/search'>
             <Search></Search>
+          </Route>
+          <Route exact path = '/product/:id'>
+            <ProductDetails></ProductDetails>
           </Route>
         </Switch>
       </div>

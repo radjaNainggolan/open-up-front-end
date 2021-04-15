@@ -9,6 +9,7 @@ module.exports = {
     
 
     screens: {
+      xxs: '320px',
       xs: '480px',
       sm: '640px',
       md: '768px',
@@ -140,7 +141,7 @@ module.exports = {
     },
     borderColor: (theme) => ({
       ...theme('colors'),
-      DEFAULT: theme('colors.gray.200', 'currentColor'),
+      DEFAULT: theme('colors.gray.200', 'currentColor','colors.amber.500'),
     }),
     borderOpacity: (theme) => theme('opacity'),
     borderRadius: {

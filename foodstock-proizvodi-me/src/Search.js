@@ -33,12 +33,12 @@ const Search = () => {
 
     return ( 
         <div className="">
-            <div className="h-28 rounded-2xl bg-gradient-to-br flex from-amber-400 to-red-400 mt-8 ">
+            <div className="search">
                 <div>
-                    <input type="text" className="m-3 w-60 outline-none  bg-white px-2 rounded-xl font-karla sm:w-80"/><br/>
+                    <input type="text" className="input"/><br/>
                 </div>
                 <div className="">
-                    <button className="rounded-xl m-3 transform delay-100 bg-white px-5 focus:outline-none font-karla font-semibold text-red-500 hover:ring-2 hover:ring-red-500">
+                    <button className="find-btn">
                         Find
                     </button>
                 </div>
@@ -52,7 +52,7 @@ const Search = () => {
                 previousLabel={"Previous"}
                 nextLabel={"Next"}
                 breakLabel={". . ."}
-                pageRangeDisplayed={4}
+                pageRangeDisplayed={0}
                 pageCount={pages}
                 onPageChange={paginate}
                 containerClassName="flex flex-wrap mb-16 ml-12 sm:ml-10"
@@ -61,8 +61,8 @@ const Search = () => {
                 nextLinkClassName="outline-none"
                 previousLinkClassName="outline-none"
                 activeClassName="paging bg-red-500"
-                activeLinkClassName="otline-none"
-                pageClassName="paging"
+                activeLinkClassName="outline-none"
+                pageClassName="hidden sm:block paging"
 
                 pageLinkClassName="outline-none"
                 breakClassName="ml-5"
