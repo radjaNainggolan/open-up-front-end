@@ -12,7 +12,7 @@ const AddProduct = () => {
     const [regularPrice , setregularPrice] = useState(0);
     const [description , setDescription] = useState('');
     const [name , setName] = useState('');
-    const [nutriScore , setNutriScore] = useState("");
+    const [nutriScore , setNutriScore] = useState("A");
     const [carbs , setCarbs] = useState(0);
     const [energy , setEnergy] = useState(0);
     const [fats , setFats] = useState(0);
@@ -96,7 +96,8 @@ const AddProduct = () => {
                 </div>
                 <div className="mt-5 ml-6 text-lg">
                     <label className="" htmlFor="name">Nutri-score</label>
-                    <select value={nutriScore} onChange={(e) => setNutriScore(e.target.value)} className="w-64 text-red-500 rounded-xl ml-5 focus:outline-none px-3 " name="nutri-score" >
+                    <select value={nutriScore} defaultValue="" onChange={(e) => setNutriScore(e.target.value)} className="w-64 text-red-500 rounded-xl ml-5 focus:outline-none px-3 " name="nutri-score" >
+                        <option value="">none</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
