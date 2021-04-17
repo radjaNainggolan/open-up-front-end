@@ -187,6 +187,34 @@
       },
       "status": "",
       "id": 3
+    },
+    {
+      "briefDescription": "fsdfsd",
+      "category": "sdfsdf",
+      "currentPrice": {
+        "date": "",
+        "discountAmount": "0565",
+        "discountEndDate": 0,
+        "discountPrice": 0,
+        "discountStartDate": 0,
+        "regularPrice": "065",
+        "store": ""
+      },
+      "description": "sdfdsfsdfdsf",
+      "name": "raden",
+      "nutriScore": "",
+      "nutritionalValues": {
+        "carbs": 0,
+        "energy": 0,
+        "fats": 0,
+        "fibers": 0,
+        "proteins": 0,
+        "salt": 0,
+        "saturatedFats": 0,
+        "sugar": 0
+      },
+      "status": "",
+      "id": 4
     }
   ]
 }
