@@ -1,21 +1,16 @@
 
 import { useParams } from "react-router";
 
-import { useState , useEffect } from "react";
+import { useState } from "react";
 import {useHistory } from 'react-router-dom';
 import axios from 'axios';
 import useData from "./useData";
 const EditProduct = () => {
     
+    
     const {id} = useParams();
-    
+
     const {products , loading} = useData('http://localhost:8000/products/'+id);
-    console.log(products);
-    
-    if(products){
-        console.log(products);
-    }
-   
 
     const [briefDescription , setBriefDescription] = useState();
     const [category , setCategory] = useState();
@@ -24,7 +19,7 @@ const EditProduct = () => {
     const [discountEndDate , setDiscountEndDate] = useState();
     const [discountPrice , setDiscountPrice] = useState(0);
     const [discountStartDate , setDiscountStartDate] = useState(0);
-    const [regularPrice , setregularPrice] = useState(0);
+    const [regularPrice , setRegularPrice] = useState(0);
     const [description , setDescription] = useState('');
     const [name , setName] = useState('');
     const [nutriScore , setNutriScore] = useState("");
@@ -36,8 +31,9 @@ const EditProduct = () => {
     const [salt , setSalt] = useState(0);
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0);
-    const [store , setStore] = useState(toString(products.store));
+    const [store , setStore] = useState();
     const history = useHistory();
+    
     
 
     const handleSubmit = (e) => {
@@ -72,12 +68,11 @@ const EditProduct = () => {
         },
         "status": ""
         }
-        axios.put('http://localhost:8000/products', product)
-        .then(res => {
-            if(res.status === 201){
-                alert("Successfully submited!");
-                history.push('/search');
-            }
+        axios.put('http://localhost:8000/products/'+id, product)
+        .then(res => {        
+            alert("Successfully submited!");
+            history.push('/search');
+            
         })
         .catch(err => alert(err));
 
@@ -89,12 +84,12 @@ const EditProduct = () => {
     
     return ( 
         <div>
-
-        { !loading && (
+        
+        { products &&  !loading && (
         <div className="rounded-xl text-white font-karla grid justify-items-center">
             <form onSubmit={handleSubmit} className="bg-gradient-to-br pr-10 grid justify-items-end h-max rounded-xl w-max mt-10 mb-10 from-amber-400 to-red-400"  action="">
                 <div className="mt-5 ml-6 text-lg">
-                    <label className="" htmlFor="name">Name</label>
+                    <label className="" htmlFor="name">Name </label>
                     <input value={name} onChange={(e) => setName(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
                     
                 </div>
@@ -164,7 +159,7 @@ const EditProduct = () => {
                 </div>
                 <div className="mt-5 ml-6 text-lg">
                     <label className="" htmlFor="name">Regular price</label>
-                    <input value={regularPrice} onChange={(e) => setregularPrice(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="number" min="0" step="0.01"  />
+                    <input value={regularPrice} onChange={(e) => setRegularPrice(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="number" min="0" step="0.01"  />
                 </div>
                 <div className="mt-5 ml-6 text-lg">
                     <label className="" htmlFor="name">Discount amount</label>

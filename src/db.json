@@ -141,57 +141,49 @@
       "id": "Ew1cUIA"
     },
     {
-      "briefDescription": "pord",
+      "briefDescription": "prod",
       "category": "prod",
       "currentPrice": {
-        "date": "2021-01-01",
-        "discountAmount": "1",
-        "discountEndDate": "2020-01-01",
-        "discountPrice": "2",
-        "discountStartDate": "2021-01-01",
-        "regularPrice": "1",
-        "store": "idea"
+        "discountPrice": 0,
+        "discountStartDate": 0,
+        "regularPrice": 0
       },
       "description": "prod",
       "name": "prod",
       "nutriScore": "",
       "nutritionalValues": {
-        "carbs": 0.32,
-        "energy": "256/36",
-        "fats": 0.45,
-        "fibers": 0.45,
+        "carbs": 0,
+        "energy": 0,
+        "fats": 0,
+        "fibers": 0,
         "proteins": 0.19,
-        "salt": 1,
-        "saturatedFats": 4.62,
-        "sugar": 0.63
+        "salt": 0,
+        "saturatedFats": 0,
+        "sugar": 0
       },
       "status": "",
       "id": "FXsHue_"
     },
     {
-      "briefDescription": "arar",
-      "category": "arara",
+      "briefDescription": "raden je editovo",
       "currentPrice": {
-        "date": "",
-        "discountAmount": 0,
-        "discountEndDate": 0,
         "discountPrice": 0,
         "discountStartDate": 0,
         "regularPrice": 0,
-        "store": ""
+        "store": "[object Undefined]"
       },
-      "description": "rarara",
-      "name": "arar",
+      "description": "evo neke deskrippcije\n",
+      "name": "",
       "nutriScore": "",
       "nutritionalValues": {
-        "carbs": 0,
-        "energy": "0rarar",
-        "fats": 0,
+        "carbs": 0.04,
+        "energy": 0,
+        "fats": 0.06,
         "fibers": 0,
         "proteins": 0,
-        "salt": 0,
+        "salt": 0.14,
         "saturatedFats": 0,
-        "sugar": 0
+        "sugar": 0.04
       },
       "status": "",
       "id": 3

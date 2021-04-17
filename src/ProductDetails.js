@@ -5,19 +5,13 @@ import {Link} from 'react-router-dom';
 
 
 const ProductDetails = () => {
-    
     const {id} = useParams();
-    
-    //const {products , loading} = useData('http://localhost:8000/products'+id);
-
     const {products , loading} = useData('http://localhost:8000/products/'+id);
     if(loading){
         return  <h1 className="text-2xl">Lading ...</h1>
     }
-    console.log(loading);
-    console.log(products);
+    
     return ( 
-        
         <div>
         {products && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
@@ -113,34 +107,48 @@ const ProductDetails = () => {
             <div className="w-full text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
                 <ul>
                     <li>Energy: {products.nutritionalValues.energy} (KJ/kcal)</li>
+                    <br/>
                     <li>Fats: {products.nutritionalValues.fats} (g)</li>
+                    <br/>
                     <li>Saturated fats: {products.nutritionalValues.saturatedFats} (g)</li>
+                    <br/>
                     <li>Proteins: {products.nutritionalValues.proteins} (g)</li>
+                    <br/>
                     <li>Crabonhydrates: {products.nutritionalValues.carbs} (g)</li>
+                    <br/>
                     <li>Sugar: {products.nutritionalValues.sugar} (g)</li>
+                    <br/>
                     <li>Fibers: {products.nutritionalValues.fibers}  (g)</li>
+                    <br/>
                     <li>Salt: {products.nutritionalValues.salt} (g)</li>
                 </ul>
             </div>
 
             <div className="w-full h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 " >
                 <ul>Date: {products.currentPrice.date} </ul>
+                <br/>
                 <ul>Discount amount: {products.currentPrice.discountAmount} </ul>
+                <br/>
                 <ul>Discount end date: {products.currentPrice.discountEndDate} </ul>
+                <br/>
                 <ul>Discount price: {products.currentPrice.discountPrice} </ul>
+                <br/>
                 <ul>Dsicount start date: {products.currentPrice.discountStartDate} </ul>
+                <br/>
                 <ul>Regular price: {products.currentPrice.regularPrice} </ul>
+                <br/>
                 <ul>Store: {products.currentPrice.store} </ul>
             </div>
 
             <div>
-                <Link to={`/edit/${id}`} className="mt-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla font-semibold text-lg text-white">
+                <Link to={`/edit/${id}`}  className="mt-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla font-semibold text-lg text-white">
                     Edit
                 </Link>
             </div>
+            
 
-
-        </div> )}
+        </div> 
+        )}
         </div>
     );
 }

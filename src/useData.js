@@ -5,11 +5,6 @@ const useData = (url) => {
     const [products , setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
         
-    // const fetchData = async (url) => {
-    //     const res = await axios.get(url);
-    //     setProducts(res.data);
-    // } 
-
     useEffect( () => {
         setLoading(true);
         axios.get(url)
@@ -17,7 +12,7 @@ const useData = (url) => {
         .catch(err => console.log(err))
         .finally(() => setLoading(false));
     } , [url])
-
+    
     return {products , loading};
 }
 
