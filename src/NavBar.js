@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import { useState , useEffect } from 'react';
+import { useState  } from 'react';
 const NavBar = () => {
     const [logedIn , setLogedIn] = useState(false);
     const [open , setOpen] = useState(false);

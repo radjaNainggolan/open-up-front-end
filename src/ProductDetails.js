@@ -1,18 +1,25 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { isElementOfType } from "react-dom/test-utils";
-import { useHistory, useParams } from "react-router";
+
+import { useParams } from "react-router";
 import useData from './useData';
+import {Link} from 'react-router-dom';
+
+
 const ProductDetails = () => {
     
     const {id} = useParams();
-    console.log(id);
-    const {products , loading} = useData('http://localhost:8000/products/'+id);
     
+    //const {products , loading} = useData('http://localhost:8000/products'+id);
+
+    const {products , loading} = useData('http://localhost:8000/products/'+id);
+    if(loading){
+        return  <h1 className="text-2xl">Lading ...</h1>
+    }
+    console.log(loading);
     console.log(products);
     return ( 
         
         <div>
+        {products && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
             <div className="w-60 h-80  margin-auto bg-gradient-to-br from-amber-400 to-red-400 rounded-xl mt-10 mb-5 ">
                 <img src="" alt="error" className=""/>
@@ -38,7 +45,7 @@ const ProductDetails = () => {
                         <tr className=" border-b-2 solid border-amber-500 border-collapse">
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/2731/2731636.svg?token=exp=1618443062~hmac=f976ba7b6b0cafe66f9a7558cf0b5a05" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base"> Energy</h4>
                                     <h5>{products.nutritionalValues.energy} (KJ/kcal)</h5>
                                 </div>
@@ -46,21 +53,21 @@ const ProductDetails = () => {
                             
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/1497/1497035.svg?token=exp=1618443559~hmac=328129409d7083cf3a797bf1d2d92e84" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Fats</h4>
                                     <h5>{products.nutritionalValues.fats} (g)</h5>
                                 </div>
                             </td>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/2400/2400736.svg?token=exp=1618443911~hmac=9cb4f3039f337185eb8835d3fc20e3e2" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Saturated fats</h4>
                                     <h5>{products.nutritionalValues.saturatedFats} (g)</h5>
                                 </div>
                             </td>
                             <td className="w-44 h-36">
                                 <div className="grid justify-items-center px-5 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/2731/2731636.svg?token=exp=1618443062~hmac=f976ba7b6b0cafe66f9a7558cf0b5a05" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Proteins</h4>
                                     <h5>{products.nutritionalValues.proteins} (g)</h5>
                                 </div>
@@ -70,7 +77,7 @@ const ProductDetails = () => {
                         <tr>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/1929/1929710.svg?token=exp=1618445831~hmac=1cd171c50b4dd81bf617386c26a49793" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base"> <span> Carbohydrates </span></h4>
                                     <h5>{products.nutritionalValues.carbs} (g)</h5>
                                 </div>
@@ -78,21 +85,21 @@ const ProductDetails = () => {
                             
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/4142/4142959.svg?token=exp=1618446023~hmac=01de19378491426acd89f5dcfe27a8c1" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Sugar</h4>
                                     <h5>{products.nutritionalValues.sugar} (g)</h5>
                                 </div>
                             </td>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="https://www.flaticon.com/svg/vstatic/svg/2689/2689434.svg?token=exp=1618446441~hmac=fea48023926a404507aca6f1058de134" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Fibers</h4>
                                     <h5>{products.nutritionalValues.fibers} (g)</h5>
                                 </div>
                             </td >
                             <td className="w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2  " src="https://www.flaticon.com/svg/vstatic/svg/1094/1094680.svg?token=exp=1618446472~hmac=010eb83a8e43f553da0b13d6823d66ec" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2  " src="" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Salt</h4>
                                     <h5>{products.nutritionalValues.salt}(g)</h5>
                                 </div>
@@ -127,13 +134,13 @@ const ProductDetails = () => {
             </div>
 
             <div>
-                <button className="mt-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla font-semibold text-lg text-white">
+                <Link to={`/edit/${id}`} className="mt-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla font-semibold text-lg text-white">
                     Edit
-                </button>
+                </Link>
             </div>
 
 
-        </div> 
+        </div> )}
         </div>
     );
 }

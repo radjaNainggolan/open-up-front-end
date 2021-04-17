@@ -3,7 +3,7 @@ import Search from './Search';
 import ProductDetails from './ProductDetails';
 import { BrowserRouter as Router , Route , Switch} from 'react-router-dom';
 import AddProduct from './AddProducts';
-import Edit from './Edit';
+import EditProduct from './EditProduct.js';
 function App() {
   return (
     <Router>
@@ -20,9 +20,8 @@ function App() {
           <Route exact path = '/new-product-form'>
             <AddProduct></AddProduct>
           </Route>
-          <Route exact path ="/rewards">
-            <Edit>
-            </Edit>
+          <Route exact path ="/edit/:id">
+            <EditProduct></EditProduct>
           </Route>
         </Switch>
       </div>

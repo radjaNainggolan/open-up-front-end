@@ -25,7 +25,8 @@
         "saturatedFats": -1,
         "sugar": -1
       },
-      "status": "draft"
+      "status": "draft",
+      "id": 2
     },
     {
       "briefDescription": "Junece meso",
@@ -52,7 +53,8 @@
         "saturatedFats": -1,
         "sugar": -1
       },
-      "status": "draft"
+      "status": "draft",
+      "id": 1
     },
     {
       "briefDescription": "ne pusta te da odrastes",
@@ -81,6 +83,118 @@
       },
       "status": "",
       "id": "CiSu4xY"
+    },
+    {
+      "briefDescription": "Narndza",
+      "category": "Keks",
+      "currentPrice": {
+        "date": "2017-01-01",
+        "discountAmount": "565",
+        "discountEndDate": "2019-02-02",
+        "discountPrice": "551",
+        "discountStartDate": "2018-01-01",
+        "regularPrice": "44.5",
+        "store": "Idea"
+      },
+      "description": "crvenka",
+      "name": "Jaffa",
+      "nutriScore": "C",
+      "nutritionalValues": {
+        "carbs": "20",
+        "energy": "1000",
+        "fats": "50",
+        "fibers": "23",
+        "proteins": "40",
+        "salt": "14",
+        "saturatedFats": "50",
+        "sugar": "30"
+      },
+      "status": "",
+      "id": "ypq7KPr"
+    },
+    {
+      "briefDescription": "sok od brskeve",
+      "category": "sok",
+      "currentPrice": {
+        "date": "2019-02-01",
+        "discountAmount": "0.5",
+        "discountEndDate": "2020-11-26",
+        "discountPrice": "1.5",
+        "discountStartDate": "2020-01-01",
+        "regularPrice": "1.5",
+        "store": "idea"
+      },
+      "description": "nista drugo samo voce",
+      "name": "fruvita",
+      "nutriScore": null,
+      "nutritionalValues": {
+        "carbs": "12",
+        "energy": "204/48",
+        "fats": "0",
+        "fibers": "0",
+        "proteins": "0",
+        "salt": "0",
+        "saturatedFats": "0",
+        "sugar": "11"
+      },
+      "status": "",
+      "id": "Ew1cUIA"
+    },
+    {
+      "briefDescription": "pord",
+      "category": "prod",
+      "currentPrice": {
+        "date": "2021-01-01",
+        "discountAmount": "1",
+        "discountEndDate": "2020-01-01",
+        "discountPrice": "2",
+        "discountStartDate": "2021-01-01",
+        "regularPrice": "1",
+        "store": "idea"
+      },
+      "description": "prod",
+      "name": "prod",
+      "nutriScore": "",
+      "nutritionalValues": {
+        "carbs": 0.32,
+        "energy": "256/36",
+        "fats": 0.45,
+        "fibers": 0.45,
+        "proteins": 0.19,
+        "salt": 1,
+        "saturatedFats": 4.62,
+        "sugar": 0.63
+      },
+      "status": "",
+      "id": "FXsHue_"
+    },
+    {
+      "briefDescription": "arar",
+      "category": "arara",
+      "currentPrice": {
+        "date": "",
+        "discountAmount": 0,
+        "discountEndDate": 0,
+        "discountPrice": 0,
+        "discountStartDate": 0,
+        "regularPrice": 0,
+        "store": ""
+      },
+      "description": "rarara",
+      "name": "arar",
+      "nutriScore": "",
+      "nutritionalValues": {
+        "carbs": 0,
+        "energy": "0rarar",
+        "fats": 0,
+        "fibers": 0,
+        "proteins": 0,
+        "salt": 0,
+        "saturatedFats": 0,
+        "sugar": 0
+      },
+      "status": "",
+      "id": 3
     }
   ]
 }

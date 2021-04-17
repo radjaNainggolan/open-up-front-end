@@ -1,5 +1,5 @@
-import React, { useState , useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+
 import ProductsList from './ProductsList';
 import useData from './useData';
 import ReactPaginate from 'react-paginate';
@@ -7,14 +7,14 @@ import {Link} from 'react-router-dom';
 const Search = () => {
     
     const [currentPage , setCurrentPage] = useState(0);
-    const [productsPerPage , setProductsPerPage] = useState(16);
+    const productsPerPage = 16;
     const {products , loading} = useData('http://localhost:8000/products/');
     //console.log(products);
     
     
 
     const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    
     const currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
     //console.log(currentProducts);
     const pages = Math.ceil(products.length/productsPerPage);

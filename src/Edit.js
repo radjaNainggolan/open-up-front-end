@@ -7,7 +7,7 @@ class Edit extends Component{
     };
 
     render(){
-        
+        return <div>Raden</div>;
     }
 
 }
