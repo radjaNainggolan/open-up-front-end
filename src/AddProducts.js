@@ -12,7 +12,7 @@ const AddProduct = () => {
     const [regularPrice , setregularPrice] = useState(0);
     const [description , setDescription] = useState('');
     const [name , setName] = useState('');
-    const [nutriScore , setNutriScore] = useState("A");
+    const [nutriScore , setNutriScore] = useState("");
     const [carbs , setCarbs] = useState(0);
     const [energy , setEnergy] = useState(0);
     const [fats , setFats] = useState(0);
