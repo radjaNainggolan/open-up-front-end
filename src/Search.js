@@ -4,30 +4,30 @@ import ProductsList from './ProductsList';
 import useData from './useData';
 import ReactPaginate from 'react-paginate';
 import {Link} from 'react-router-dom';
+import stringSimilarity from 'string-similarity';
 const Search = () => {
     
     const [currentPage , setCurrentPage] = useState(0);
+    const [search , setSearch] = useState('');
     const productsPerPage = 16;
     const {products , loading} = useData('http://localhost:8000/products/');
-    //console.log(products);
-    
-    
-
     const indexOfLastProduct = currentPage * productsPerPage;
+    let currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
+    let prods = 0;
     
-    const currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
-    //console.log(currentProducts);
+    if(search !== ''){
+        prods = products.filter(prod => stringSimilarity.compareTwoStrings(prod.name, search) > 0.000001);
+        currentProducts = prods.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
+    }
+    
     const pages = Math.ceil(products.length/productsPerPage);
-
     const paginate = ({selected}) => setCurrentPage(selected);
     
-    
-
     return ( 
         <div className="">
             <div className="search ">
                 <div>
-                    <input type="text" className="input"/><br/>
+                    <input type="text" value={search} onChange= {e => setSearch(e.target.value)} className="input"/><br/>
                 </div>
                 <div className="">
                     <button className="find-btn">
