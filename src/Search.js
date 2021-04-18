@@ -50,7 +50,7 @@ const Search = () => {
                 previousLabel={"Previous"}
                 nextLabel={"Next"}
                 breakLabel={". . ."}
-                pageRangeDisplayed={0}
+                pageRangeDisplayed={2}
                 pageCount={pages}
                 onPageChange={paginate}
                 containerClassName="flex flex-wrap mb-16 ml-12 sm:ml-10"

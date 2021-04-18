@@ -39,29 +39,29 @@ const ProductDetails = () => {
                         <tr className=" border-b-2 solid border-amber-500 border-collapse">
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/energy.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base"> Energy</h4>
-                                    <h5>{products.nutritionalValues.energy} (KJ/kcal)</h5>
+                                    <h5>{products.nutritionalValues.energy} (kJ/kcal)</h5>
                                 </div>
                             </td>
                             
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/fats.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Fats</h4>
                                     <h5>{products.nutritionalValues.fats} (g)</h5>
                                 </div>
                             </td>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/saturatedFats.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Saturated fats</h4>
                                     <h5>{products.nutritionalValues.saturatedFats} (g)</h5>
                                 </div>
                             </td>
                             <td className="w-44 h-36">
                                 <div className="grid justify-items-center px-5 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/proteins.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Proteins</h4>
                                     <h5>{products.nutritionalValues.proteins} (g)</h5>
                                 </div>
@@ -71,7 +71,7 @@ const ProductDetails = () => {
                         <tr>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/carbs.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base"> <span> Carbohydrates </span></h4>
                                     <h5>{products.nutritionalValues.carbs} (g)</h5>
                                 </div>
@@ -79,21 +79,21 @@ const ProductDetails = () => {
                             
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/sugar.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Sugar</h4>
                                     <h5>{products.nutritionalValues.sugar} (g)</h5>
                                 </div>
                             </td>
                             <td className="border-r-2 solid border-amber-500 w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3 ">
-                                    <img className="w-10 h-10 text-white mb-2" src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2" src="/images/fibers.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Fibers</h4>
                                     <h5>{products.nutritionalValues.fibers} (g)</h5>
                                 </div>
                             </td >
                             <td className="w-44 h-36">
                                 <div className="grid justify-items-center px-5 mt-3">
-                                    <img className="w-10 h-10 text-white mb-2  " src="" alt=""/>
+                                    <img className="w-10 h-10 text-white mb-2  " src="/images/salt.png" alt=""/>
                                     <h4 className="font-karla font-semibold text-base">Salt</h4>
                                     <h5>{products.nutritionalValues.salt}(g)</h5>
                                 </div>
@@ -106,6 +106,8 @@ const ProductDetails = () => {
             
             <div className="w-full text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
                 <ul>
+                    <h1 className="text-2xl">On 100 g:</h1>
+                    <br/>
                     <li>Energy: {products.nutritionalValues.energy} (KJ/kcal)</li>
                     <br/>
                     <li>Fats: {products.nutritionalValues.fats} (g)</li>
