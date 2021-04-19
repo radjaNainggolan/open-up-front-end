@@ -1,20 +1,21 @@
 import {Link} from 'react-router-dom';
-import { useState  } from 'react';
-const NavBar = () => {
-    const [logedIn , setLogedIn] = useState(false);
+import { useState } from 'react';
+import {Auth} from "aws-amplify";
+import {useHistory} from "react-router-dom";
+
+const NavBar = ({isAuthenticated, setAuthenticationStatus, setIsAuthenticating}) => {
     const [open , setOpen] = useState(false);
-    
-    const login = () => {
-        setLogedIn(true);
-    };
-    
-    const logout = () => {
-        setLogedIn(false);
-    };
+    const history = useHistory();
 
     const onMenuClick = () => {
         setOpen(!open);
     };
+
+    const logOut = async () => {
+        Auth.signOut();
+        setAuthenticationStatus(false);
+        history.push("/");
+    }
 
     const DropDownMenu = () => {
         return (
@@ -66,18 +67,16 @@ const NavBar = () => {
                         </svg>
                     </button>
                 </div>
-                {logedIn === false && (
-                    <div id="sign" className="hidden sm:block ml-auto">
-                        <Link to="/log-in" onClick={login} className="btn-nav">Sign in</Link>
-                        <Link to="/sign-up" className="btn-nav">Sign up</Link>
-                    </div>
-                )}
-                {logedIn === true && (
-                    <div id="sign" className="hidden sm:block ml-auto">
-                        <Link to="/log-in"  className="btn-nav">Profile</Link>
-                        <Link to="/sign-up" onClick={logout} className="btn-nav">Log out</Link>
-                    </div>
-                )}
+                {isAuthenticated ? 
+                (<div id="sign" className="hidden sm:block ml-auto">
+                    <Link to="/"  className="btn-nav"> Profile </Link>
+                    <Link to="/" className="btn-nav" onClick = {logOut}> Log out</Link>
+                </div>) : 
+                (<div id="sign" className="hidden sm:block ml-auto">
+                    <Link to="/log-in" className="btn-nav"> Sign in</Link>
+                    <Link to="/sign-up" className="btn-nav"> 
+                    Sign up </Link>
+                </div>)}
             </nav>
             {open && <DropDownMenu></DropDownMenu>}
         </div>
