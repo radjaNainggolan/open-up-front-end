@@ -20,7 +20,15 @@ const EditProduct = () => {
     const [discountPrice , setDiscountPrice] = useState(0);
     const [discountStartDate , setDiscountStartDate] = useState(0);
     const [regularPrice , setRegularPrice] = useState(0);
-    const [description , setDescription] = useState('');
+    const [additionalInformation , setAdditionalInformation] = useState("");
+    const [alcohol, setAlcohol] = useState("");
+    const [allergens, setAllergens] = useState("");
+    const [countryOfOrigin, setConutryOfOrigin] = useState("");
+    const [expiryDate, setExpiryDate] = useState("");
+    const [imports,  setImports] = useState("");
+    const [ingredients, setIngredients] = useState("");
+    const [maintenance ,setMaintenance] = useState("");
+    const [producer , setProducer] = useState("");
     const [name , setName] = useState('');
     const [nutriScore , setNutriScore] = useState("");
     const [carbs , setCarbs] = useState(0);
@@ -31,7 +39,7 @@ const EditProduct = () => {
     const [salt , setSalt] = useState(0);
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0);
-    const [store , setStore] = useState();
+    
     const history = useHistory();
     
     
@@ -42,13 +50,20 @@ const EditProduct = () => {
             setBriefDescription(products.briefDescription);
             setCategory(products.category);
             setDate(products.currentPrice.date);
-            setDescription(products.description);
+            setAlcohol(products.description.alcohol);
+            setAllergens(products.description.allergens);
+            setConutryOfOrigin(products.description.countryOfOrigin);
+            setExpiryDate(products.description.expiryDate);
+            setImports(products.description.imports);
+            setIngredients(products.description.ingredients);
+            setMaintenance(products.description.maintenance);
+            setProducer(products.description.producer);
             setDiscountAmount(products.currentPrice.discountAmount);
             setDiscountEndDate(products.currentPrice.discountEndDate);
             setDiscountStartDate(products.currentPrice.discountStartDate);
             setDiscountPrice(products.currentPrice.discountPrice);
             setRegularPrice(products.currentPrice.regularPrice);
-            setStore(products.currentPrice.store);
+            
             setName(products.name);
             setNutriScore(products.nutriScore);
             setCarbs(products.nutritionalValues.carbs);
@@ -61,7 +76,7 @@ const EditProduct = () => {
             setSalt(products.nutritionalValues.salt);
         }
 
-    },[loading])
+    },[loading, products])
 
 
     const handleSubmit = (e) => {
@@ -70,32 +85,42 @@ const EditProduct = () => {
         
 
         const product = { 
-        "briefDescription": briefDescription,
-        "category": category,
-        "currentPrice": {
-            "date": date,
-            "discountAmount": discountAmount,
-            "discountEndDate": discountEndDate,
-            "discountPrice": discountPrice,
-            "discountStartDate": discountStartDate,
-            "regularPrice": regularPrice,
-            "store": store
-        },
-        "description": description,
-        "name": name,
-        "nutriScore": nutriScore,
-        "nutritionalValues": {
-            "carbs": parseFloat(carbs),
-            "energy": energy,
-            "fats": parseFloat(fats),
-            "fibers": parseFloat(fibers),
-            "proteins": parseFloat(proteins),
-            "salt": parseFloat(salt),
-            "saturatedFats": parseFloat(saturatedFats),
-            "sugar": parseFloat(sugar)
-        },
-        "status": ""
-        }
+            "briefDescription": briefDescription,
+            "category": category,
+            "currentPrice": {
+                "date": date,
+                "discountAmount": discountAmount,
+                "discountEndDate": discountEndDate,
+                "discountPrice": discountPrice,
+                "discountStartDate": discountStartDate,
+                "regularPrice": regularPrice
+                
+            },
+            "description": {
+                "additionalInformation": "Može sadržati kikiriki, orašaste plodove, sezam, soju, i gluten u tragovima",
+                "alcohol": alcohol,
+                "allergens": allergens,
+                "countryOfOrigin": countryOfOrigin,
+                "expiryDate": expiryDate,
+                "imports": imports,
+                "ingredients": ingredients,
+                "maintenance": maintenance,
+                "producer": producer
+            },
+            "name": name,
+            "nutriScore": nutriScore,
+            "nutritionalValues": {
+                "carbs": parseFloat(carbs),
+                "energy": energy,
+                "fats": parseFloat(fats),
+                "fibers": parseFloat(fibers),
+                "proteins": parseFloat(proteins),
+                "salt": parseFloat(salt),
+                "saturatedFats": parseFloat(saturatedFats),
+                "sugar": parseFloat(sugar)
+            },
+            "status": ""
+            }
         axios.put('http://localhost:8000/products/'+id, product)
         .then(res => {        
             alert("Successfully submited!");
@@ -114,10 +139,10 @@ const EditProduct = () => {
         <div>
         
         { products &&  !loading && (
-        <div className="rounded-xl text-white font-karla grid justify-items-center">
+            <div className="rounded-xl text-white font-karla grid justify-items-center">
             <form onSubmit={handleSubmit} className="bg-gradient-to-br pr-10 grid justify-items-end h-max rounded-xl w-max mt-10 mb-10 from-amber-400 to-red-400"  action="">
                 <div className="mt-5 ml-6 text-lg">
-                    <label className="" htmlFor="name">Name </label>
+                    <label className="" htmlFor="name">Name</label>
                     <input value={name} onChange={(e) => setName(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
                     
                 </div>
@@ -132,8 +157,48 @@ const EditProduct = () => {
                     
                 </div>
                 <div className="mt-5 ml-6 text-lg flex flex-wrap">
-                    <label className="" htmlFor="name">Description</label>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    <label className="" htmlFor="name">Additional informations</label>
+                    <textarea value={additionalInformation} onChange={(e) => setAdditionalInformation(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Alcohol</label>
+                    <input value={alcohol} onChange={(e) => setAlcohol(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Allergens</label>
+                    <input value={allergens} onChange={(e) => setAllergens(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Country of origin</label>
+                    <input value={countryOfOrigin} onChange={(e) => setConutryOfOrigin(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Expiry date</label>
+                    <input value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Imports</label>
+                    <input value={imports} onChange={(e) => setImports(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Ingredients</label>
+                    <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Maintenance</label>
+                    <input value={maintenance} onChange={(e) => setMaintenance(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    
+                </div>
+                <div className="mt-5 ml-6 text-lg flex flex-wrap">
+                    <label className="" htmlFor="name">Producer</label>
+                    <input value={producer} onChange={(e) => setProducer(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
                     
                 </div>
                 <div className="mt-5 ml-6 text-lg">
@@ -207,10 +272,7 @@ const EditProduct = () => {
                     <label className="" htmlFor="name">Discount end date</label>
                     <input value={discountEndDate} onChange={(e) => setDiscountEndDate(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="date" />
                 </div>
-                <div className="mt-5 mb-5 ml-6 text-lg">
-                    <label className="" htmlFor="name">Store</label>
-                    <input value={store} onChange={(e) => setStore(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
-                </div>
+                
                 <button className="mt-5 px-6 rounded-xl focus:outline-none bg-white hover:ring-amber-600 text-amber-600 hover:ring-2 font-karla font-semibold text-lg mb-10" to="/search">
                     Submit
                 </button>

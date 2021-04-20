@@ -8,7 +8,7 @@ const ProductDetails = () => {
     const {id} = useParams();
     const {products , loading} = useData('http://localhost:8000/products/'+id);
     if(loading){
-        return  <h1 className="text-2xl">Lading ...</h1>
+        return  <h1 className="text-2xl grid justify-items-center mt-48">Loading ...</h1>
     }
     
     return ( 
@@ -123,6 +123,28 @@ const ProductDetails = () => {
                     <li>Fibers: {products.nutritionalValues.fibers}  (g)</li>
                     <br/>
                     <li>Salt: {products.nutritionalValues.salt} (g)</li>
+                </ul>
+            </div>
+
+            <div className="w-full text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+                <ul>
+                    <h1 className="text-2xl">Description:</h1>
+                    <br/>
+                    <li>Alcohol: {products.description.alcohol} </li>
+                    <br/>
+                    <li>Allergens: {products.description.allergens} </li>
+                    <br/>
+                    <li>Country of origin: {products.description.countryOfOrigin} </li>
+                    <br/>
+                    <li>Expiry date: {products.description.expiryDate}</li>
+                    <br/>
+                    <li>Imports: {products.description.imports}</li>
+                    <br/>
+                    <li>Ingredients: {products.description.ingredients}</li>
+                    <br/>
+                    <li>Maintenance: {products.description.maintenance}</li>
+                    <br/>
+                    <li>Producer: {products.description.producer}</li>
                 </ul>
             </div>
 

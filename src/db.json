@@ -1,220 +1,43 @@
 {
   "products": [
+    
     {
-      "briefDescription": "Teleće meso",
-      "category": "Teletina",
+      "briefDescription": "uibibi",
+      "category": "ibiubi",
       "currentPrice": {
-        "date": "2021-04-14",
-        "discountAmount": "10.80",
-        "discountEndDate": "20.04.",
-        "discountPrice": "9.99",
-        "discountStartDate": "06.04.",
-        "regularPrice": "11.20",
-        "store": "Voli"
-      },
-      "description": "",
-      "name": "Teleći but bez kosti",
-      "nutriScore": "A",
-      "nutritionalValues": {
-        "carbs": -1,
-        "energy": "",
-        "fats": -1,
-        "fibers": -1,
-        "proteins": -1,
-        "salt": -1,
-        "saturatedFats": -1,
-        "sugar": -1
-      },
-      "status": "draft",
-      "id": 2
-    },
-    {
-      "briefDescription": "Junece meso",
-      "category": "Junetina",
-      "currentPrice": {
-        "date": "2021-04-14",
-        "discountAmount": "10.80",
-        "discountEndDate": "20.04.",
-        "discountPrice": "9.99",
-        "discountStartDate": "06.04.",
-        "regularPrice": "11.20",
-        "store": "Voli"
-      },
-      "description": "",
-      "name": "Juneci but bez kosti",
-      "nutriScore": "A",
-      "nutritionalValues": {
-        "carbs": -1,
-        "energy": "",
-        "fats": -1,
-        "fibers": -1,
-        "proteins": -1,
-        "salt": -1,
-        "saturatedFats": -1,
-        "sugar": -1
-      },
-      "status": "draft",
-      "id": 1
-    },
-    {
-      "briefDescription": "ne pusta te da odrastes",
-      "category": "Keks",
-      "currentPrice": {
-        "date": "2015-05-30",
-        "discountAmount": "5.5",
-        "discountEndDate": "2017-02-02",
-        "discountPrice": "2.5",
-        "discountStartDate": "2017-04-05",
-        "regularPrice": "3",
-        "store": "voli"
-      },
-      "description": "nista binto",
-      "name": "Plazma",
-      "nutriScore": "B",
-      "nutritionalValues": {
-        "carbs": "0.5",
-        "energy": "17.5",
-        "fats": "27",
-        "fibers": "0.5",
-        "proteins": "2",
-        "salt": "1",
-        "saturatedFats": "5.5",
-        "sugar": "1"
-      },
-      "status": "",
-      "id": "CiSu4xY"
-    },
-    {
-      "briefDescription": "Narndza",
-      "category": "Keks",
-      "currentPrice": {
-        "date": "2017-01-01",
-        "discountAmount": "565",
-        "discountEndDate": "2019-02-02",
-        "discountPrice": "551",
-        "discountStartDate": "2018-01-01",
-        "regularPrice": "44.5",
-        "store": "Idea"
-      },
-      "description": "crvenka",
-      "name": "Jaffa",
-      "nutriScore": "C",
-      "nutritionalValues": {
-        "carbs": "20",
-        "energy": "1000",
-        "fats": "50",
-        "fibers": "23",
-        "proteins": "40",
-        "salt": "14",
-        "saturatedFats": "50",
-        "sugar": "30"
-      },
-      "status": "",
-      "id": "ypq7KPr"
-    },
-    {
-      "briefDescription": "sok od brskeve",
-      "category": "sok",
-      "currentPrice": {
-        "date": "2019-02-01",
-        "discountAmount": "0.5",
-        "discountEndDate": "2020-11-26",
-        "discountPrice": "1.5",
+        "date": "2022-01-02",
+        "discountAmount": "0.03",
+        "discountEndDate": "2020-02-01",
+        "discountPrice": "0.06",
         "discountStartDate": "2020-01-01",
-        "regularPrice": "1.5",
+        "regularPrice": "0.06",
         "store": "idea"
       },
-      "description": "nista drugo samo voce",
-      "name": "fruvita",
-      "nutriScore": null,
+      "description": {
+        "additionalInformation": "Može sadržati kikiriki, orašaste plodove, sezam, soju, i gluten u tragovima",
+        "alcohol": "ibiubiubiub",
+        "allergens": "iubibiu",
+        "countryOfOrigin": "iubiubiub",
+        "expiryDate": "iubiubib",
+        "imports": "iubibiub",
+        "ingredients": "iubiubiu",
+        "maintenance": "biubiubiub",
+        "producer": "iubiubiub"
+      },
+      "name": "feffsdfsd",
+      "nutriScore": "E",
       "nutritionalValues": {
-        "carbs": 12,
-        "energy": "204/48",
-        "fats": 0.28,
-        "fibers": 0,
-        "proteins": 0,
-        "salt": 0,
-        "saturatedFats": 0,
-        "sugar": 11
+        "carbs": 0.01,
+        "energy": "dsfsd",
+        "fats": 0.14,
+        "fibers": 0.01,
+        "proteins": 0.02,
+        "salt": 0.01,
+        "saturatedFats": 0.03,
+        "sugar": 0.02
       },
       "status": "",
-      "id": "Ew1cUIA"
-    },
-    {
-      "briefDescription": "prod",
-      "category": "prod",
-      "currentPrice": {
-        "discountPrice": 0,
-        "discountStartDate": 0,
-        "regularPrice": 0
-      },
-      "description": "prod",
-      "name": "prod",
-      "nutriScore": "",
-      "nutritionalValues": {
-        "carbs": 0,
-        "energy": 0,
-        "fats": 0,
-        "fibers": 0,
-        "proteins": 0.19,
-        "salt": 0,
-        "saturatedFats": 0,
-        "sugar": 0
-      },
-      "status": "",
-      "id": "FXsHue_"
-    },
-    {
-      "briefDescription": "raden je editovo",
-      "currentPrice": {
-        "discountPrice": 0,
-        "discountStartDate": 0,
-        "regularPrice": 0,
-        "store": "[object Undefined]"
-      },
-      "description": "evo neke deskrippcije\n",
-      "name": "",
-      "nutriScore": "",
-      "nutritionalValues": {
-        "carbs": 0.04,
-        "energy": 0,
-        "fats": 0.06,
-        "fibers": 0,
-        "proteins": 0,
-        "salt": 0.14,
-        "saturatedFats": 0,
-        "sugar": 0.04
-      },
-      "status": "",
-      "id": 3
-    },
-    {
-      "briefDescription": "fsdfsd",
-      "category": "sdfsdf",
-      "currentPrice": {
-        "date": "",
-        "discountAmount": "0565",
-        "discountEndDate": 0,
-        "discountPrice": 0,
-        "discountStartDate": 0,
-        "regularPrice": "065",
-        "store": ""
-      },
-      "description": "sdfdsfsdfdsf",
-      "name": "raden",
-      "nutriScore": "",
-      "nutritionalValues": {
-        "carbs": 0,
-        "energy": 0,
-        "fats": 0,
-        "fibers": 0,
-        "proteins": 0,
-        "salt": 0,
-        "saturatedFats": 0,
-        "sugar": 0
-      },
-      "status": "",
-      "id": 4
+      "id": 5
     }
   ]
 }
