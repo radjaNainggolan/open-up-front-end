@@ -6,8 +6,13 @@ import AddProduct from './AddProducts';
 import EditProduct from './EditProduct.js';
 import SignUp from "./SignUp.js";
 import LogIn from "./LogIn.js";
+import Search2 from "./Search2.js";
 import React, {useState, useEffect} from "react";
 import {Auth} from "aws-amplify";
+import Amplify from 'aws-amplify';
+
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
@@ -16,8 +21,7 @@ import {Auth} from "aws-amplify";
           - Handle non existing routes. That is done by adding epmty Route path at the end, where
           the apropriate NotFound components is rendered. However, since Home url / is not mathced, it
           would appear as if Home URL is non existent. Design Home component so something can be rendered
-          when matching route /.
-          
+          when matching route /.   
 */
 
 function App() {
@@ -48,7 +52,7 @@ function App() {
   }
   return (!isAuthenticating && (
       <Router>
-        <div className="App">
+        {/* <div className="App">
           <NavBar isAuthenticated = {isAuthenticated} setAuthenticationStatus = {setAuthenticationStatus}
                   setIsAuthenticating = {setIsAuthenticating}>
           </NavBar>
@@ -78,7 +82,8 @@ function App() {
               </LogIn>
             </Route>
           </Switch>
-        </div>
+        </div> */}
+        <Search2></Search2>
       </Router>
   ));
 }

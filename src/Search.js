@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import ProductsList from './ProductsList';
 import useData from './useData';
 import ReactPaginate from 'react-paginate';
