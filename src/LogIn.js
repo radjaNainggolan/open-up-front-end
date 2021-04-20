@@ -41,18 +41,20 @@ const LogIn = ({isAuthenticated, setAuthenticationStatus}) => {
             </h1>
         )
         : (
-            <div className = "log-in-div">
-                <form method = "POST">
-                    <label htmlFor="email-field"> Enter email </label>
-                    <br/>
-                    <input type="email" name="email-field" value = {email} onChange = {changeEmail}/>
-                    <br/>
-                    <label htmlFor=""> Enter passowrd </label>
-                    <br/>
-                    <input type="password" name="password-field" value = {password} onChange = {changePassword}/>
-                    <br/>
-                    <input type="submit" value="Submit" onClick = {submitClickEvent}/>
-                </form>
+            <div className="grid justify-items-center">
+                <div className="log-in-div">
+                    <form className="log-in-form" method = "POST">
+                        <label htmlFor="email-field"> Enter email </label>
+                        
+                        <input className="log-in-input" type="email" name="email-field" value = {email} onChange = {changeEmail}/>
+                        <br/>
+                        <label className="" htmlFor=""> Enter passowrd </label>
+                        
+                        <input className="log-in-input" type="password" name="password-field" value = {password} onChange = {changePassword}/>
+                        <br/>
+                        <input className="log-in-submit"  type="submit" value="Submit" onClick = {submitClickEvent}/>
+                    </form>
+                </div>
             </div>
         )}
         </>

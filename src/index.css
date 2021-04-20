@@ -9,6 +9,21 @@
    
 }
 
+.log-in-div{
+   @apply  mt-20 p-10 w-max rounded-xl grid justify-end bg-gradient-to-br from-amber-400 to-red-400
+}
+
+.log-in-input{
+   @apply rounded-xl focus:outline-none ml-5 mt-3 text-red-500 w-80 px-2 text-lg
+}
+
+.log-in-submit{
+   @apply mx-20 mt-16 text-red-500 rounded-xl px-3 hover:ring-2 hover:ring-red-500 bg-white
+}
+
+.log-in-form{
+   @apply grid justify-items-center text-white font-karla text-xl
+}
 .search{
    @apply h-28 rounded-2xl bg-gradient-to-br flex from-amber-400 to-red-400 mt-8 
 }

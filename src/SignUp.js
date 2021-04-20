@@ -75,34 +75,36 @@ const SignUp = ({setAuthenticationStatus}) => {
 
     return(
         <>
-            {!newUser ? ( <div className = "sign-up-div">
-            <form method = "POST">
-                <label htmlFor="email-field"> Enter email </label>
-                <br/>
-                <input type="email" name="email-field" value = {email} onChange = {changeEmail}/>
-                <br/>
-                <label htmlFor=""> Enter passowrd </label>
-                <br/>
-                <input type="password" name="password-field" value = {password} onChange = {changePassword}/>
-                <br/>
-                <label htmlFor="confirm-password-field"> Re-enter password </label>
-                <br/>
-                <input type="password" name="confirm-password-field" value = {confirmedPassword} 
-                    onChange = {changeConfirmedPassword}/>
-                <br/>
-                <input disabled = {!validateForm()} type="submit" value="Submit" onClick = {submitClickEvent}/>
-            </form>
-        </div>) : 
-            (<>
-                <h1> Check your E-mail and enter the verification code. </h1>
-                <form method = "POST">
-                    <label htmlFor="confirmation-field"> Confirmation code </label>
+            {!newUser ? ( <div className = "grid justify-items-center">
+            <div className="log-in-div">
+                <form className="log-in-form" method = "POST">
+                    <label htmlFor="email-field"> Enter email </label>
+                    
+                    <input className="log-in-input" type="email" name="email-field" value = {email} onChange = {changeEmail}/>
                     <br/>
-                    <input type="tel" name="confirmation-field" onChange = {changeConfirmationCode}/>
+                    <label htmlFor=""> Enter passowrd </label>
+                    
+                    <input className="log-in-input" type="password" name="password-field" value = {password} onChange = {changePassword}/>
                     <br/>
-                    <input type="submit" value="Verify" onClick = {verifyClickEvent}/>
+                    <label htmlFor="confirm-password-field"> Re-enter password </label>
+                    
+                    <input className="log-in-input" type="password" name="confirm-password-field" value = {confirmedPassword} 
+                        onChange = {changeConfirmedPassword}/>
+                    <br/>
+                    <input className="log-in-submit" disabled = {!validateForm()} type="submit" value="Submit" onClick = {submitClickEvent}/>
                 </form>
-            </>)}
+            </div>
+        </div>) : 
+            (<div className="log-in-div">
+                <h1> Check your E-mail and enter the verification code. </h1>
+                <form className="log-in-form" method = "POST">
+                    <label htmlFor="confirmation-field"> Confirmation code </label>
+                    
+                    <input className="log-in-input" type="tel" name="confirmation-field" onChange = {changeConfirmationCode}/>
+                    <br/>
+                    <input className="log-in-submit" type="submit" value="Verify" onClick = {verifyClickEvent}/>
+                </form>
+            </div>)}
         </>
     );
 }
