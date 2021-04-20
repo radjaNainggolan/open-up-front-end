@@ -1,7 +1,7 @@
 
 import { useParams } from "react-router";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {useHistory } from 'react-router-dom';
 import axios from 'axios';
 import useData from "./useData";
@@ -35,6 +35,34 @@ const EditProduct = () => {
     const history = useHistory();
     
     
+
+    useEffect(() => {
+
+        if(!loading){
+            setBriefDescription(products.briefDescription);
+            setCategory(products.category);
+            setDate(products.currentPrice.date);
+            setDescription(products.description);
+            setDiscountAmount(products.currentPrice.discountAmount);
+            setDiscountEndDate(products.currentPrice.discountEndDate);
+            setDiscountStartDate(products.currentPrice.discountStartDate);
+            setDiscountPrice(products.currentPrice.discountPrice);
+            setRegularPrice(products.currentPrice.regularPrice);
+            setStore(products.currentPrice.store);
+            setName(products.name);
+            setNutriScore(products.nutriScore);
+            setCarbs(products.nutritionalValues.carbs);
+            setEnergy(products.nutritionalValues.energy);
+            setFats(products.nutritionalValues.fats);
+            setSaturatedFats(products.nutritionalValues.saturatedFats);
+            setProteins(products.nutritionalValues.proteins);
+            setSugar(products.nutritionalValues.sugar);
+            setFibers(products.nutritionalValues.fibers);
+            setSalt(products.nutritionalValues.salt);
+        }
+
+    },[loading])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -128,14 +128,14 @@
       "name": "fruvita",
       "nutriScore": null,
       "nutritionalValues": {
-        "carbs": "12",
+        "carbs": 12,
         "energy": "204/48",
-        "fats": "0",
-        "fibers": "0",
-        "proteins": "0",
-        "salt": "0",
-        "saturatedFats": "0",
-        "sugar": "11"
+        "fats": 0.28,
+        "fibers": 0,
+        "proteins": 0,
+        "salt": 0,
+        "saturatedFats": 0,
+        "sugar": 11
       },
       "status": "",
       "id": "Ew1cUIA"
