@@ -12,7 +12,7 @@ const NavBar = ({isAuthenticated, setAuthenticationStatus, setIsAuthenticating})
     };
 
     const logOut = async () => {
-        Auth.signOut();
+        await Auth.signOut();
         setAuthenticationStatus(false);
         history.push("/");
     }
