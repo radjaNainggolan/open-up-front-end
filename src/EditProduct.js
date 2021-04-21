@@ -25,7 +25,7 @@ const EditProduct = () => {
 
     useEffect(() => {
         fetchProduct();
-    }, [])
+    },[])
 
     const [briefDescription , setBriefDescription] = useState();
     const [category , setCategory] = useState();
@@ -75,7 +75,6 @@ const EditProduct = () => {
             setDiscountStartDate(products.currentPrice.discountStartDate);
             setDiscountPrice(products.currentPrice.discountPrice);
             setRegularPrice(products.currentPrice.regularPrice);
-            
             setName(products.name);
             setNutriScore(products.nutriScore);
             setCarbs(products.nutritionalValues.carbs);

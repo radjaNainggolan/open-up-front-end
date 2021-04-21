@@ -6,10 +6,9 @@ import AddProduct from './AddProducts';
 import EditProduct from './EditProduct.js';
 import SignUp from "./SignUp.js";
 import LogIn from "./LogIn.js";
-import Search2 from "./Search2.js";
 import React, {useState, useEffect} from "react";
 import {Auth} from "aws-amplify";
-import Amplify from 'aws-amplify';
+
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
