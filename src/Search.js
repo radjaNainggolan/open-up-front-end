@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import ProductsList from './ProductsList';
 import useData from './useData';
 import ReactPaginate from 'react-paginate';
 import {Link} from 'react-router-dom';
 import stringSimilarity from 'string-similarity';
+import { API, graphqlOperation } from 'aws-amplify';
+import { getAllProducts } from "./graphql/queries";
 const Search = () => {
     
+    const[products, setProducts] = useState([]);
+    const [loading , setLoading] = useState(true);
+    useEffect(() => {
+        fetchProducts();
+    }, [])
+
+    async function fetchProducts() {
+        try {
+            setLoading(true);
+            const productsData = await API.graphql(graphqlOperation(getAllProducts));
+            const produ = productsData.data.getAllProducts;
+            setProducts(produ);
+            setLoading(false);
+        } 
+          
+        catch (err) { 
+            alert(err.status); 
+        }
+    }
+
+
     const [currentPage , setCurrentPage] = useState(0);
     const [search , setSearch] = useState('');
     const productsPerPage = 16;
-    const {products , loading} = useData('http://localhost:8000/products/');
+    
     const indexOfLastProduct = currentPage * productsPerPage;
     let currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
     let prods = 0;

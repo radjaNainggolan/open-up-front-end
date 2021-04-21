@@ -1,12 +1,36 @@
 
 import { useParams } from "react-router";
-import useData from './useData';
-import {Link} from 'react-router-dom';
 
+import {Link} from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { API, graphqlOperation } from 'aws-amplify';
+import { getProduct } from "./graphql/queries";
 
 const ProductDetails = () => {
     const {id} = useParams();
-    const {products , loading} = useData('http://localhost:8000/products/'+id);
+    const [products , setProducts] = useState([]);
+    const [loading , setLoading] = useState(true);
+
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
+
+    async function fetchProduct() {
+        try {
+            setLoading(true);
+            const productsData = await API.graphql(graphqlOperation(getProduct,{id:id}));
+            const produ = productsData.data.getProduct;
+            setProducts(produ);
+            setLoading(false);
+        } 
+          
+        catch (err) { 
+            alert(err.status); 
+        }
+    }
+
+
     if(loading){
         return  <h1 className="text-2xl grid justify-items-center mt-48">Loading ...</h1>
     }
@@ -160,8 +184,7 @@ const ProductDetails = () => {
                 <ul>Dsicount start date: {products.currentPrice.discountStartDate} </ul>
                 <br/>
                 <ul>Regular price: {products.currentPrice.regularPrice} </ul>
-                <br/>
-                <ul>Store: {products.currentPrice.store} </ul>
+                
             </div>
 
             <div>

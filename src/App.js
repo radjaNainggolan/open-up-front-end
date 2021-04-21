@@ -52,7 +52,7 @@ function App() {
   }
   return (!isAuthenticating && (
       <Router>
-        {/* <div className="App">
+          <div className="App">
           <NavBar isAuthenticated = {isAuthenticated} setAuthenticationStatus = {setAuthenticationStatus}
                   setIsAuthenticating = {setIsAuthenticating}>
           </NavBar>
@@ -82,8 +82,8 @@ function App() {
               </LogIn>
             </Route>
           </Switch>
-        </div> */}
-        <Search2></Search2>
+        </div>  
+        {/* <Search2></Search2> */}
       </Router>
   ));
 }

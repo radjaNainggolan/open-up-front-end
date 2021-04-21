@@ -1,16 +1,38 @@
 
 import { useParams } from "react-router";
-
+import { API, graphqlOperation } from 'aws-amplify';
+import { getProduct } from "./graphql/queries";
 import { useState , useEffect } from "react";
 import {useHistory } from 'react-router-dom';
-import axios from 'axios';
-import useData from "./useData";
+import {updateProduct} from './graphql/mutations';
+
 const EditProduct = () => {
     
     
     const {id} = useParams();
+    const [products , setProducts] = useState([]);
+    const [loading , setLoading] = useState(true);
+    async function fetchProduct() {
+        try {
+            setLoading(true);
+            const productsData = await API.graphql(graphqlOperation(getProduct,{id:id}));
+            const produ = productsData.data.getProduct;
+            setProducts(produ);
+            setLoading(false);
+        } 
+          
+        catch (err) { 
+            alert(err.status); 
+        }
+    }
 
-    const {products , loading} = useData('http://localhost:8000/products/'+id);
+    
+    
+
+
+    useEffect(() => {
+        fetchProduct();
+    }, [])
 
     const [briefDescription , setBriefDescription] = useState();
     const [category , setCategory] = useState();
@@ -45,6 +67,8 @@ const EditProduct = () => {
     
 
     useEffect(() => {
+
+        
 
         if(!loading){
             setBriefDescription(products.briefDescription);
@@ -85,6 +109,7 @@ const EditProduct = () => {
         
 
         const product = { 
+            "id":id,
             "briefDescription": briefDescription,
             "category": category,
             "currentPrice": {
@@ -119,15 +144,19 @@ const EditProduct = () => {
                 "saturatedFats": parseFloat(saturatedFats),
                 "sugar": parseFloat(sugar)
             },
-            "status": ""
+            "status": products.status
             }
-        axios.put('http://localhost:8000/products/'+id, product)
-        .then(res => {        
-            alert("Successfully submited!");
-            history.push('/search');
+        
+            try{
+                API.graphql(graphqlOperation(updateProduct,product))
+                .then(res => console.log(res))
+                .catch(err =>{
+                    console.log(err);
+                })
+            }catch(err){
+                //console.log(err);
+            }    
             
-        })
-        .catch(err => alert(err));
 
         
 
@@ -188,7 +217,7 @@ const EditProduct = () => {
                 </div>
                 <div className="mt-5 ml-6 text-lg flex flex-wrap">
                     <label className="" htmlFor="name">Ingredients</label>
-                    <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
                     
                 </div>
                 <div className="mt-5 ml-6 text-lg flex flex-wrap">

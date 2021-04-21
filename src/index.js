@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Amplify } from 'aws-amplify';
-import config from './config';
+import {config , appsynconfig } from './config';
 
 // Amplify configuration, first basic configuration for integrating with Cognito
 Amplify.configure({
@@ -15,6 +15,8 @@ Amplify.configure({
     userPoolWebClientId: config.cognito.APP_CLIENT_ID
   }
 });
+
+Amplify.configure(appsynconfig);
 
 ReactDOM.render(
   <React.StrictMode>
