@@ -1,6 +1,4 @@
-
 import { useParams } from "react-router";
-
 import {Link} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { API, graphqlOperation } from 'aws-amplify';
@@ -30,7 +28,6 @@ const ProductDetails = () => {
         }
     }
 
-
     if(loading){
         return  <h1 className="text-2xl grid justify-items-center mt-48">Loading ...</h1>
     }
@@ -40,7 +37,7 @@ const ProductDetails = () => {
         {products && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
             <div className="w-60 h-80  margin-auto bg-gradient-to-br from-amber-400 to-red-400 rounded-xl mt-10 mb-5 ">
-                <img src="" alt="error" className=""/>
+                <img src = {products.images ? products.images[0] : null} alt="error" className=""/>
             </div>
             
             <div className="w-96 text-center font-karla font-semibold text-white text-base h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">

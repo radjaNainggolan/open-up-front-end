@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router";
 import { API, graphqlOperation } from 'aws-amplify';
 import { getProduct } from "./graphql/queries";
@@ -7,8 +6,6 @@ import {useHistory } from 'react-router-dom';
 import {updateProduct} from './graphql/mutations';
 
 const EditProduct = () => {
-    
-    
     const {id} = useParams();
     const [products , setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
@@ -25,10 +22,6 @@ const EditProduct = () => {
             alert(err.status); 
         }
     }
-
-    
-    
-
 
     useEffect(() => {
         fetchProduct();
@@ -63,13 +56,8 @@ const EditProduct = () => {
     const [sugar , setSugar] = useState(0);
     
     const history = useHistory();
-    
-    
 
     useEffect(() => {
-
-        
-
         if(!loading){
             setBriefDescription(products.briefDescription);
             setCategory(products.category);
@@ -105,8 +93,6 @@ const EditProduct = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        
 
         const product = { 
             "id":id,
@@ -147,21 +133,13 @@ const EditProduct = () => {
             "status": products.status
             }
         
-            try{
-                API.graphql(graphqlOperation(updateProduct,product))
-                .then(res => console.log(res))
-                .catch(err =>{
-                    console.log(err);
-                })
-            }catch(err){
-                //console.log(err);
-            }    
-            
-
-        
-
-        
-
+            API.graphql(graphqlOperation(updateProduct, {input: {id: id, name: "Temp product"}}))
+            .then(res => {
+                history.push(`/product/${id}`);
+            })
+            .catch(err =>{
+                alert(JSON.stringify(err, null, 4));
+            });
     };
     
     return ( 

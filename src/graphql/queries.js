@@ -39,6 +39,7 @@ export const getAllProducts = /* GraphQL */ `
         fibers
       }
       status
+      images
     }
   }
 `;
@@ -80,6 +81,7 @@ export const getProduct = /* GraphQL */ `
         fibers
       }
       status
+      images
     }
   }
 `;

@@ -11,7 +11,7 @@ const ProductsList = ({data , loa}) => {
                 
                     <Link key={product.id} className="grid justify-items-center text-center text-white font-karla font-base" to={`/product/${product.id}`}>
                         <div className="w-40 h-40 rounded-xl">
-                            <img className="mt-4 rounded-xl mb-5" src="https://www.ediskont.rs/uploads/store/products/images/plazma_keks_bambi_150g_198.jpg" alt="error" />
+                            <img className="mt-4 rounded-xl mb-5" src = {product.images ? product.images[0] : null} alt="error" />
                         </div>
                         <div className="mt-5">
                             <h2 className="overflow-hidden">Name :{product.name}</h2>

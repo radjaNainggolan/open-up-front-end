@@ -11,9 +11,6 @@ import React, {useState, useEffect} from "react";
 import {Auth} from "aws-amplify";
 import Amplify from 'aws-amplify';
 
-import awsconfig from './aws-exports';
-Amplify.configure(awsconfig);
-
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -29,9 +26,6 @@ function App() {
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-
-  // Giving the empty list of states for useEffect means that the function given in use effect
-  // runs only on the first render. 
   useEffect(() => {
     onLoad();
   }, [])
@@ -83,7 +77,6 @@ function App() {
             </Route>
           </Switch>
         </div>  
-        {/* <Search2></Search2> */}
       </Router>
   ));
 }
