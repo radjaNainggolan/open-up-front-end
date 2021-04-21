@@ -1,16 +1,31 @@
-
 import { useParams } from "react-router";
-
+import { API, graphqlOperation } from 'aws-amplify';
+import { getProduct } from "./graphql/queries";
 import { useState , useEffect } from "react";
 import {useHistory } from 'react-router-dom';
-import axios from 'axios';
-import useData from "./useData";
-const EditProduct = () => {
-    
-    
-    const {id} = useParams();
+import {updateProduct} from './graphql/mutations';
 
-    const {products , loading} = useData('http://localhost:8000/products/'+id);
+const EditProduct = () => {
+    const {id} = useParams();
+    const [products , setProducts] = useState([]);
+    const [loading , setLoading] = useState(true);
+    async function fetchProduct() {
+        try {
+            setLoading(true);
+            const productsData = await API.graphql(graphqlOperation(getProduct,{id:id}));
+            const produ = productsData.data.getProduct;
+            setProducts(produ);
+            setLoading(false);
+        } 
+          
+        catch (err) { 
+            alert(err.status); 
+        }
+    }
+
+    useEffect(() => {
+        fetchProduct();
+    },[])
 
     const [briefDescription , setBriefDescription] = useState();
     const [category , setCategory] = useState();
@@ -41,11 +56,8 @@ const EditProduct = () => {
     const [sugar , setSugar] = useState(0);
     
     const history = useHistory();
-    
-    
 
     useEffect(() => {
-
         if(!loading){
             setBriefDescription(products.briefDescription);
             setCategory(products.category);
@@ -63,7 +75,6 @@ const EditProduct = () => {
             setDiscountStartDate(products.currentPrice.discountStartDate);
             setDiscountPrice(products.currentPrice.discountPrice);
             setRegularPrice(products.currentPrice.regularPrice);
-            
             setName(products.name);
             setNutriScore(products.nutriScore);
             setCarbs(products.nutritionalValues.carbs);
@@ -82,9 +93,8 @@ const EditProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        
-
         const product = { 
+            "id":id,
             "briefDescription": briefDescription,
             "category": category,
             "currentPrice": {
@@ -97,7 +107,7 @@ const EditProduct = () => {
                 
             },
             "description": {
-                "additionalInformation": "Može sadržati kikiriki, orašaste plodove, sezam, soju, i gluten u tragovima",
+                "additionalInformation": additionalInformation,
                 "alcohol": alcohol,
                 "allergens": allergens,
                 "countryOfOrigin": countryOfOrigin,
@@ -119,20 +129,16 @@ const EditProduct = () => {
                 "saturatedFats": parseFloat(saturatedFats),
                 "sugar": parseFloat(sugar)
             },
-            "status": ""
+            "status": products.status
             }
-        axios.put('http://localhost:8000/products/'+id, product)
-        .then(res => {        
-            alert("Successfully submited!");
-            history.push('/search');
-            
-        })
-        .catch(err => alert(err));
-
         
-
-        
-
+            API.graphql(graphqlOperation(updateProduct, {input: product }))
+            .then(res => {
+                history.push(`/product/${id}`);
+            })
+            .catch(err =>{
+                alert(JSON.stringify(err, null, 4));
+            });
     };
     
     return ( 
@@ -188,7 +194,7 @@ const EditProduct = () => {
                 </div>
                 <div className="mt-5 ml-6 text-lg flex flex-wrap">
                     <label className="" htmlFor="name">Ingredients</label>
-                    <input value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
+                    <textarea value={ingredients} onChange={(e) => setIngredients(e.target.value)} className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5" type="text"  />
                     
                 </div>
                 <div className="mt-5 ml-6 text-lg flex flex-wrap">

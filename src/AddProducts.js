@@ -81,11 +81,6 @@ const AddProduct = () => {
             }
         })
         .catch(err => alert(err));
-
-        
-
-        
-
     };
     
     return ( 

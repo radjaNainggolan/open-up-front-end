@@ -1,19 +1,29 @@
-import {useState , useEffect } from 'react';
-import axios from 'axios';
+// import {useState , useEffect } from 'react';
+// import { API, graphqlOperation } from 'aws-amplify';
+// import { getProduct } from "./graphql/queries";
 
-const useData = (url) => {
-    const [products , setProducts] = useState([]);
-    const [loading , setLoading] = useState(true);
+// const useData = (id) => {
+//     const [products , setProducts] = useState([]);
+//     const [loading , setLoading] = useState(true);
         
-    useEffect( () => {
-        setLoading(true);
-        axios.get(url)
-        .then(res => setProducts(res.data))
-        .catch(err => console.log(err))
-        .finally(() => setLoading(false));
-    } , [url])
-    
-    return {products , loading};
-}
+//     async function fetchProduct() {
+//         try {
+//             setLoading(true);
+//             const productsData = await API.graphql(graphqlOperation(getProduct,{id:id}));
+//             const produ = productsData.data.getProduct;
+//             setProducts(produ);
+//             setLoading(false);
+//         } 
+          
+//         catch (err) { 
+//             alert(err.status); 
+//         }
 
-export default useData;
+//     useEffect( () => {
+//         fetchProduct();
+//     } , [id])
+    
+//     return {products , loading};
+// }
+
+// //export default useData;

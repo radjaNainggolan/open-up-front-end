@@ -9,6 +9,7 @@ import LogIn from "./LogIn.js";
 import React, {useState, useEffect} from "react";
 import {Auth} from "aws-amplify";
 
+
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -16,8 +17,7 @@ import {Auth} from "aws-amplify";
           - Handle non existing routes. That is done by adding epmty Route path at the end, where
           the apropriate NotFound components is rendered. However, since Home url / is not mathced, it
           would appear as if Home URL is non existent. Design Home component so something can be rendered
-          when matching route /.
-          
+          when matching route /.   
 */
 
 function App() {
@@ -25,9 +25,6 @@ function App() {
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-
-  // Giving the empty list of states for useEffect means that the function given in use effect
-  // runs only on the first render. 
   useEffect(() => {
     onLoad();
   }, [])
@@ -48,7 +45,7 @@ function App() {
   }
   return (!isAuthenticating && (
       <Router>
-        <div className="App">
+          <div className="App">
           <NavBar isAuthenticated = {isAuthenticated} setAuthenticationStatus = {setAuthenticationStatus}
                   setIsAuthenticating = {setIsAuthenticating}>
           </NavBar>
@@ -78,7 +75,7 @@ function App() {
               </LogIn>
             </Route>
           </Switch>
-        </div>
+        </div>  
       </Router>
   ));
 }
