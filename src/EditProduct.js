@@ -108,7 +108,7 @@ const EditProduct = () => {
                 
             },
             "description": {
-                "additionalInformation": "Može sadržati kikiriki, orašaste plodove, sezam, soju, i gluten u tragovima",
+                "additionalInformation": additionalInformation,
                 "alcohol": alcohol,
                 "allergens": allergens,
                 "countryOfOrigin": countryOfOrigin,
@@ -133,7 +133,7 @@ const EditProduct = () => {
             "status": products.status
             }
         
-            API.graphql(graphqlOperation(updateProduct, {input: {id: id, name: "Temp product"}}))
+            API.graphql(graphqlOperation(updateProduct, {input: product }))
             .then(res => {
                 history.push(`/product/${id}`);
             })
