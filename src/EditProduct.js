@@ -28,11 +28,11 @@ const EditProduct = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const [briefDescription , setBriefDescription] = useState();
-    const [category , setCategory] = useState();
-    const [date , setDate] = useState();
-    const [discountAmount , setDiscountAmount] = useState();
-    const [discountEndDate , setDiscountEndDate] = useState();
+    const [briefDescription , setBriefDescription] = useState("");
+    const [category , setCategory] = useState("");
+    const [date , setDate] = useState("");
+    const [discountAmount , setDiscountAmount] = useState("");
+    const [discountEndDate , setDiscountEndDate] = useState("");
     const [discountPrice , setDiscountPrice] = useState(0);
     const [discountStartDate , setDiscountStartDate] = useState(0);
     const [regularPrice , setRegularPrice] = useState(0);
@@ -45,7 +45,7 @@ const EditProduct = () => {
     const [ingredients, setIngredients] = useState("");
     const [maintenance ,setMaintenance] = useState("");
     const [producer , setProducer] = useState("");
-    const [name , setName] = useState('');
+    const [name , setName] = useState("");
     const [nutriScore , setNutriScore] = useState("");
     const [carbs , setCarbs] = useState(0);
     const [energy , setEnergy] = useState(0);

@@ -9,16 +9,19 @@ const ProductsList = ({data , loa}) => {
             {data.map( (product) => (
                 <div key={product.id} className="product">
                 
-                    <Link key={product.id} className="grid justify-items-center text-center text-white font-karla font-base" to={`/product/${product.id}`}>
+                    <Link key={product.id} className="grid justify-items-center text-center text-white font-karla text-sm" to={`/product/${product.id}`}>
                         <div className="w-40 h-40 rounded-xl">
                             <img className="mt-4 rounded-xl mb-5" src = {product.images ? product.images[0] : null} alt="error" />
                         </div>
-                        <div className="mt-5">
-                            <h2 className="overflow-hidden">Name :{product.name}</h2>
+                        <div className="mt-10">
+                            <h2 className="overflow-hidden mb-2"><span> Name: {product.name}</span></h2>
+                            
                             <ul>
-                                <li className="overflow-hidden">Brief description: {product.briefDescription}</li>
-                                <li className="overflow-hidden">Category: {product.category}</li>
-                                <li className="overflow-hidden">Nutri-score: {product.nutriScore}</li>
+                                <li className="overflow-hidden mb-2">  Brief description: {product.briefDescription}</li>
+                                
+                                <li className="overflow-hidden mb-2">Category: {product.category}</li>
+                                
+                                <li className="overflow-hidden mb-2"><span>Nutri-score: {product.nutriScore}</span></li>
                             </ul>
                         </div>
                     </Link>
