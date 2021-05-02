@@ -36,16 +36,34 @@ const NavBar = ({isAuthenticated, setAuthenticationStatus, setIsAuthenticating})
                         Rewards
                     </Link>
                 </div>
-                <div>
-                    <Link onClick={onMenuClick} to="/log-in" className="drop-down-btn">
-                        Log in
-                    </Link>
-                </div>
-                <div>
-                    <Link onClick={onMenuClick} to="/sign-up" className="drop-down-btn">
-                        Sign up
-                    </Link>
-                </div>
+                
+                {isAuthenticated ? 
+                (<>
+
+                    <div>
+                        <Link onClick={onMenuClick} to="/log-in" className="drop-down-btn">
+                            Log in
+                        </Link>
+                    </div>
+                    <div>
+                        <Link onClick={onMenuClick} to="/sign-up" className="drop-down-btn">
+                            Sign up
+                        </Link>
+                    </div>
+                </>) : 
+                (<>
+
+                    <div>
+                        <Link onClick={onMenuClick} to="/log-in" className="drop-down-btn">
+                            Log in
+                        </Link>
+                    </div>
+                    <div>
+                        <Link onClick={onMenuClick} to="/sign-up" className="drop-down-btn">
+                            Sign up
+                        </Link>
+                    </div>
+                </>)}
 
             </div>
         );
