@@ -12,6 +12,7 @@ const ProductDetails = () => {
 
     useEffect(() => {
         fetchProduct();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     async function fetchProduct() {
@@ -28,7 +29,7 @@ const ProductDetails = () => {
         }
     }
 
-    if(loading){
+    if(loading) {
         return  <h1 className="text-2xl grid justify-items-center mt-48">Loading ...</h1>
     }
     
