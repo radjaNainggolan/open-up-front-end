@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 const ProductsList = ({data , loa}) => {
-    if(loa){
+    if(loa) {
         return <h1 className="font-karla ml-60 mt-96 ">Loading...</h1>
     }
     

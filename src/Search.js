@@ -9,6 +9,7 @@ const Search = () => {
     
     const[products, setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
+
     useEffect(() => {
         fetchProducts();
     }, [])
@@ -23,7 +24,7 @@ const Search = () => {
         } 
           
         catch (err) { 
-            alert(err.status); 
+            alert(err.toString()); 
         }
     }
 
