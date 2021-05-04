@@ -1,6 +1,7 @@
 import { useState  } from "react";
 import {useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
     const [briefDescription , setbriefDescription] = useState('');
     const [category , setCategory] = useState('');
@@ -29,7 +30,7 @@ const AddProduct = () => {
     const [salt , setSalt] = useState(0);
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0.0);
-    
+    const [isOpen,setIsOpen] = useState(true);
     const history = useHistory();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -77,10 +78,29 @@ const AddProduct = () => {
         .then(res => {
             if(res.status === 201){
                 alert("Successfully submited!");
-                history.push('/search');
+                return(
+                    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+                        <Dialog.Overlay/>
+                        <Dialog.Title>Successfully submited !</Dialog.Title>
+                        <Dialog.Description>New Product is added.</Dialog.Description>
+                        <button onClick={() => setIsOpen(false)}>Cancle</button>
+                    </Dialog>
+                );
+                
             }
+            history.push('/search');
         })
-        .catch(err => alert(err));
+        .catch(err => {
+            alert(err);
+            return(
+                <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+                    <Dialog.Overlay/>
+                    <Dialog.Title>Ohh, something went wrong..</Dialog.Title>
+                    <Dialog.Description>Some error occurred, please try again.</Dialog.Description>
+                    <button onClick={() => setIsOpen(false)}>Cancle</button>
+                </Dialog>
+            );
+        });
     };
     
     return ( 

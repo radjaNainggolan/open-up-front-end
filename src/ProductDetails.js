@@ -8,7 +8,7 @@ const ProductDetails = () => {
     const {id} = useParams();
     const [products , setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
-
+    
 
     useEffect(() => {
         fetchProduct();

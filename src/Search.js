@@ -2,14 +2,13 @@ import React, { useState ,useEffect } from 'react';
 import ProductsList from './ProductsList';
 import ReactPaginate from 'react-paginate';
 import {Link} from 'react-router-dom';
-import stringSimilarity from 'string-similarity';
 import { API, graphqlOperation } from 'aws-amplify';
-import { getAllProducts } from "./graphql/queries";
+import { getAllProducts , search } from "./graphql/queries";
 const Search = () => {
     
     const[products, setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
-
+    const [search , setSearch] = useState('');
     useEffect(() => {
         fetchProducts();
     }, [])
@@ -28,19 +27,26 @@ const Search = () => {
         }
     }
 
+    async function searchProds (){
+        try{
+            setLoading(true);
+            const productsData = await API.graphql(graphqlOperation(search,{limit:10000, query:search.toString()}));
+            const produ = productsData.data.search;
+            setProducts(produ);
+            setLoading(false);
+        }catch(err){
+            alert(err.toString());
+        }
+    }
 
     const [currentPage , setCurrentPage] = useState(0);
-    const [search , setSearch] = useState('');
+    
     const productsPerPage = 16;
     
     const indexOfLastProduct = currentPage * productsPerPage;
     let currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
-    let prods = 0;
     
-    if(search !== ''){
-        prods = products.filter(prod => stringSimilarity.compareTwoStrings(prod.name, search) > 0.000001);
-        currentProducts = prods.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
-    }
+    
     
     const pages = Math.ceil(products.length/productsPerPage);
     const paginate = ({selected}) => setCurrentPage(selected);
@@ -52,7 +58,7 @@ const Search = () => {
                     <input type="text" value={search} onChange= {e => setSearch(e.target.value)} className="input"/><br/>
                 </div>
                 <div className="">
-                    <button className="find-btn">
+                    <button className="find-btn" onClick={searchProds}>
                         Find
                     </button>
                 </div>

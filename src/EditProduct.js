@@ -4,11 +4,14 @@ import { getProduct } from "./graphql/queries";
 import { useState , useEffect } from "react";
 import {useHistory } from 'react-router-dom';
 import {updateProduct} from './graphql/mutations';
+//import { Dialog } from "@headlessui/react";
+
 
 const EditProduct = () => {
     const {id} = useParams();
     const [products , setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
+    //const [isOpen, setIsOpen] = useState(false);
     async function fetchProduct() {
         try {
             setLoading(true);
@@ -90,6 +93,7 @@ const EditProduct = () => {
 
     },[loading, products])
 
+   
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -135,6 +139,8 @@ const EditProduct = () => {
         
             API.graphql(graphqlOperation(updateProduct, {input: product }))
             .then(res => {
+                alert("shit");
+                
                 history.push(`/product/${id}`);
             })
             .catch(err =>{
@@ -146,7 +152,7 @@ const EditProduct = () => {
         <div>
         
         { products &&  !loading && (
-            <div className="rounded-xl text-white font-karla grid justify-items-center">
+            <div className="rounded-xl z-10 text-white font-karla grid justify-items-center">
             <form onSubmit={handleSubmit} className="bg-gradient-to-br pr-10 grid justify-items-end h-max rounded-xl w-max mt-10 mb-10 from-amber-400 to-red-400"  action="">
                 <div className="mt-5 ml-6 text-lg">
                     <label className="" htmlFor="name">Name</label>
