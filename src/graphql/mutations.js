@@ -4,126 +4,138 @@
 export const createProduct = /* GraphQL */ `
   mutation CreateProduct($input: createProductInput!) {
     createProduct(input: $input) {
-      id
+      barcode
       briefDescription
       category
       currentPrice {
         date
         discountAmount
-        discountStartDate
         discountEndDate
         discountPrice
+        discountStartDate
         regularPrice
       }
       description {
-        allergens
-        alcohol
         additionalInformation
-        producer
-        expiryDate
-        ingredients
-        imports
+        alcohol
+        allergens
         countryOfOrigin
+        expiryDate
+        imports
+        ingredients
         maintenance
+        producer
       }
+      id
+      images
       name
       nutriScore
       nutritionalValues {
         carbs
         energy
         fats
+        fibers
         proteins
         salt
         saturatedFats
         sugar
-        fibers
       }
+      productStoreID
       status
-      images
-    }
-  }
-`;
-export const updateProduct = /* GraphQL */ `
-  mutation UpdateProduct($input: updateProductInput!) {
-    updateProduct(input: $input) {
-      id
-      briefDescription
-      category
-      currentPrice {
-        date
-        discountAmount
-        discountStartDate
-        discountEndDate
-        discountPrice
-        regularPrice
-      }
-      description {
-        allergens
-        alcohol
-        additionalInformation
-        producer
-        expiryDate
-        ingredients
-        imports
-        countryOfOrigin
-        maintenance
-      }
-      name
-      nutriScore
-      nutritionalValues {
-        carbs
-        energy
-        fats
-        proteins
-        salt
-        saturatedFats
-        sugar
-        fibers
-      }
-      status
-      images
+      store
+      storeID
     }
   }
 `;
 export const deleteProduct = /* GraphQL */ `
   mutation DeleteProduct($input: deleteProductInput!) {
     deleteProduct(input: $input) {
-      id
+      barcode
       briefDescription
       category
       currentPrice {
         date
         discountAmount
-        discountStartDate
         discountEndDate
         discountPrice
+        discountStartDate
         regularPrice
       }
       description {
-        allergens
-        alcohol
         additionalInformation
-        producer
-        expiryDate
-        ingredients
-        imports
+        alcohol
+        allergens
         countryOfOrigin
+        expiryDate
+        imports
+        ingredients
         maintenance
+        producer
       }
+      id
+      images
       name
       nutriScore
       nutritionalValues {
         carbs
         energy
         fats
+        fibers
         proteins
         salt
         saturatedFats
         sugar
-        fibers
       }
+      productStoreID
       status
+      store
+      storeID
+    }
+  }
+`;
+export const updateProduct = /* GraphQL */ `
+  mutation UpdateProduct($input: updateProductInput!) {
+    updateProduct(input: $input) {
+      barcode
+      briefDescription
+      category
+      currentPrice {
+        date
+        discountAmount
+        discountEndDate
+        discountPrice
+        discountStartDate
+        regularPrice
+      }
+      description {
+        additionalInformation
+        alcohol
+        allergens
+        countryOfOrigin
+        expiryDate
+        imports
+        ingredients
+        maintenance
+        producer
+      }
+      id
       images
+      name
+      nutriScore
+      nutritionalValues {
+        carbs
+        energy
+        fats
+        fibers
+        proteins
+        salt
+        saturatedFats
+        sugar
+      }
+      productStoreID
+      status
+      store
+      storeID
     }
   }
 `;
