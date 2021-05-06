@@ -2,7 +2,7 @@ import { useState  } from "react";
 import {useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createProduct } from "./graphql/mutations";
-import { Dialog } from "@headlessui/react";
+//import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
     const [briefDescription , setbriefDescription] = useState('');
     const [category , setCategory] = useState('');
@@ -78,7 +78,10 @@ const AddProduct = () => {
         
         }
         API.graphql(graphqlOperation(createProduct,{input:product}))
-        .then(res => alert("Inserted"))
+        .then(res => {
+            alert("Inserted");
+            history.push("/search");
+        })
         .catch(err => alert(JSON.stringify(err,null,4)));
     };
     

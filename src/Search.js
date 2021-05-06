@@ -8,11 +8,13 @@ const Search = () => {
     
     const[products, setProducts] = useState([]);
     const [loading , setLoading] = useState(true);
-    const [search , setSearch] = useState('');
+    const [SEARCH , setSearch] = useState("");
     useEffect(() => {
         fetchProducts();
-    }, [])
+        
+    },[])
 
+    
     async function fetchProducts() {
         try {
             setLoading(true);
@@ -26,11 +28,11 @@ const Search = () => {
             alert(err.toString()); 
         }
     }
-
+    
     async function searchProds (){
         try{
             setLoading(true);
-            const productsData = await API.graphql(graphqlOperation(search,{limit:1000, query:"avokado"}));
+            const productsData = await API.graphql(graphqlOperation(search,{limit:100000, query:SEARCH}));
             const produ = productsData.data.search.results;
             setProducts(produ);
             setLoading(false);
@@ -40,14 +42,9 @@ const Search = () => {
     }
 
     const [currentPage , setCurrentPage] = useState(0);
-    
     const productsPerPage = 16;
-    
     const indexOfLastProduct = currentPage * productsPerPage;
     let currentProducts = products.slice(indexOfLastProduct , indexOfLastProduct + productsPerPage);
-    
-    
-    
     const pages = Math.ceil(products.length/productsPerPage);
     const paginate = ({selected}) => setCurrentPage(selected);
     
@@ -55,10 +52,10 @@ const Search = () => {
         <div className="">
             <div className="search ">
                 <div>
-                    <input type="text" value={search} onChange= {e => setSearch(e.target.value)} className="input"/><br/>
+                    <input type="text" value={SEARCH} onChange= {e => setSearch(e.target.value)} className="input"/><br/>
                 </div>
                 <div className="">
-                    <button className="find-btn" onClick={searchProds}>
+                    <button className="find-btn" onClick={searchProds} >
                         Find
                     </button>
                 </div>
