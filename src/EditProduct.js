@@ -58,6 +58,8 @@ const EditProduct = () => {
     const [salt , setSalt] = useState(0);
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0);
+    const [store , setStore] = useState("");
+    const [barcode , setBarcode] = useState("");
     
     const history = useHistory();
 
@@ -89,6 +91,9 @@ const EditProduct = () => {
             setSugar(products.nutritionalValues.sugar);
             setFibers(products.nutritionalValues.fibers);
             setSalt(products.nutritionalValues.salt);
+            setStore(products.store);
+            setBarcode(products.barcode);
+
         }
 
     },[loading, products])
@@ -100,6 +105,7 @@ const EditProduct = () => {
 
         const product = { 
             "id":id,
+            "barcode":barcode,
             "briefDescription": briefDescription,
             "category": category,
             "currentPrice": {
@@ -134,7 +140,8 @@ const EditProduct = () => {
                 "saturatedFats": parseFloat(saturatedFats),
                 "sugar": parseFloat(sugar)
             },
-            "status": products.status
+            "status": products.status,
+            "store":store
             }
         
             API.graphql(graphqlOperation(updateProduct, {input: product }))

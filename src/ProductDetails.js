@@ -182,6 +182,12 @@ const ProductDetails = () => {
                 <ul>Dsicount start date: {products.currentPrice.discountStartDate} </ul>
                 <br/>
                 <ul>Regular price: {products.currentPrice.regularPrice} </ul>
+                <br/>
+                <ul>Barcode: {products.barcode} </ul>
+                <br/>
+                <ul>Store: {products.store} </ul>
+                <br/>
+                
                 
             </div>
 

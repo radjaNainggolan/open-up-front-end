@@ -1,6 +1,7 @@
 import { useState  } from "react";
 import {useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { API, graphqlOperation } from 'aws-amplify';
+import { createProduct } from "./graphql/mutations";
 import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
     const [briefDescription , setbriefDescription] = useState('');
@@ -20,7 +21,7 @@ const AddProduct = () => {
     const [ingredients, setIngredients] = useState("");
     const [maintenance ,setMaintenance] = useState("");
     const [producer , setProducer] = useState("");
-    const [name , setName] = useState('');
+    const [name , setName] = useState("");
     const [nutriScore , setNutriScore] = useState("");
     const [carbs , setCarbs] = useState(0);
     const [energy , setEnergy] = useState(0);
@@ -30,7 +31,7 @@ const AddProduct = () => {
     const [salt , setSalt] = useState(0);
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0.0);
-    const [isOpen,setIsOpen] = useState(true);
+    
     const history = useHistory();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,6 +40,7 @@ const AddProduct = () => {
 
         const product = { 
         "briefDescription": briefDescription,
+        "barcode":"",
         "category": category,
         "currentPrice": {
             "date": date,
@@ -72,35 +74,12 @@ const AddProduct = () => {
             "saturatedFats": parseFloat(saturatedFats),
             "sugar": parseFloat(sugar)
         },
-        "status": ""
+        "status": "published",
+        
         }
-        axios.post('http://localhost:8000/products', product)
-        .then(res => {
-            if(res.status === 201){
-                alert("Successfully submited!");
-                return(
-                    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-                        <Dialog.Overlay/>
-                        <Dialog.Title>Successfully submited !</Dialog.Title>
-                        <Dialog.Description>New Product is added.</Dialog.Description>
-                        <button onClick={() => setIsOpen(false)}>Cancle</button>
-                    </Dialog>
-                );
-                
-            }
-            history.push('/search');
-        })
-        .catch(err => {
-            alert(err);
-            return(
-                <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-                    <Dialog.Overlay/>
-                    <Dialog.Title>Ohh, something went wrong..</Dialog.Title>
-                    <Dialog.Description>Some error occurred, please try again.</Dialog.Description>
-                    <button onClick={() => setIsOpen(false)}>Cancle</button>
-                </Dialog>
-            );
-        });
+        API.graphql(graphqlOperation(createProduct,{input:product}))
+        .then(res => alert("Inserted"))
+        .catch(err => alert(JSON.stringify(err,null,4)));
     };
     
     return ( 

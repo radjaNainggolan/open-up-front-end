@@ -30,12 +30,12 @@ const Search = () => {
     async function searchProds (){
         try{
             setLoading(true);
-            const productsData = await API.graphql(graphqlOperation(search,{limit:10000, query:search.toString()}));
-            const produ = productsData.data.search;
+            const productsData = await API.graphql(graphqlOperation(search,{limit:1000, query:"avokado"}));
+            const produ = productsData.data.search.results;
             setProducts(produ);
             setLoading(false);
         }catch(err){
-            alert(err.toString());
+            alert(JSON.stringify(err, null, 4));
         }
     }
 
