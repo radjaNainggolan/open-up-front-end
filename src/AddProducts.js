@@ -2,7 +2,7 @@ import { useState  } from "react";
 import {useHistory } from 'react-router-dom';
 import { API, graphqlOperation } from 'aws-amplify';
 import { createProduct } from "./graphql/mutations";
-//import { Dialog } from "@headlessui/react";
+import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
     const [briefDescription , setbriefDescription] = useState('');
     const [category , setCategory] = useState('');
@@ -32,7 +32,37 @@ const AddProduct = () => {
     const [saturatedFats , setSaturatedFats] = useState(0);
     const [sugar , setSugar] = useState(0.0);
     
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [errOpen, setErrOpen] = useState(false);
     const history = useHistory();
+
+    const Notice = () => {
+        return(
+            <Dialog as="div" className="ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10" open={isOpen} onClose={() => setIsOpen(false)}>
+                <Dialog.Title className="text-2xl font-karla">Changes were accepted!</Dialog.Title>
+                <br />
+                <Dialog.Description className="text-lg font-karla">You have successfully modified the product</Dialog.Description>
+                <button className="px-5 rounded-xl focus:outline-none bg-red-500 hover:ring-2 hover:ring-amber-500" onClick={() => {setIsOpen(false); history.push(`/search`)}}>OK</button>
+            </Dialog>
+
+
+        );
+    };
+
+    const Error = () => {
+        return(
+            <Dialog as="div" className="grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10 absolute" open={errOpen} onClose={() => setErrOpen(false)}>
+                <Dialog.Title className="text-2xl font-karla">Ohh, something went wrong...</Dialog.Title>
+                <br />
+                <Dialog.Description className="text-lg font-karla">Some error occurred, please try again.</Dialog.Description>
+                <button className="px-5 rounded-xl focus:outline-none bg-red-500 hover:ring-2 hover:ring-amber-500" onClick={() => {setErrOpen(false); history.push(`/search`)}}>OK</button>
+            </Dialog>
+
+
+        );
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -79,15 +109,19 @@ const AddProduct = () => {
         }
         API.graphql(graphqlOperation(createProduct,{input:product}))
         .then(res => {
-            alert("Inserted");
-            history.push("/search");
+           setIsOpen(true);
         })
-        .catch(err => alert(JSON.stringify(err,null,4)));
+        .catch(err => {
+            alert(JSON.stringify(err,null,4));
+            setErrOpen(true);
+        });
     };
     
     return ( 
         
         <div className="rounded-xl text-white font-karla grid justify-items-center">
+            {isOpen && <Notice className="z-10"></Notice>}
+            {errOpen && <Error className="z-10"></Error>}
             <form onSubmit={handleSubmit} className="bg-gradient-to-br pr-10 grid justify-items-end h-max rounded-xl w-max mt-10 mb-10 from-amber-400 to-red-400"  action="">
                 <div className="mt-5 ml-6 text-lg">
                     <label className="" htmlFor="name">Name</label>
