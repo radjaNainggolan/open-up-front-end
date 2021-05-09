@@ -186,7 +186,7 @@ const EditProduct = () => {
     
     return ( 
         <div className="grid justify-items-center">
-        {isOpen && <div><Notice className="z-10"></Notice></div>}
+        {isOpen && <Notice className="z-10"></Notice>}
         {errOpen && <Error className="z-10"></Error>}
         { products &&  !loading && (
             <div className="rounded-xl z-0 text-white font-karla grid justify-items-center">

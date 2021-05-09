@@ -30,6 +30,7 @@ const SignUp = ({setAuthenticationStatus}) => {
 
             catch(e) {
                 alert(e);
+                
             }
         }
 

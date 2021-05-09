@@ -3,6 +3,7 @@ import Search from './Search';
 import ProductDetails from './ProductDetails';
 import { BrowserRouter as Router , Route , Switch} from 'react-router-dom';
 import AddProduct from './AddProducts';
+
 import EditProduct from './EditProduct.js';
 import SignUp from "./SignUp.js";
 import LogIn from "./LogIn.js";
@@ -25,6 +26,7 @@ function App() {
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  
   useEffect(() => {
     onLoad();
   }, [])

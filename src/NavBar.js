@@ -74,9 +74,9 @@ const NavBar = ({isAuthenticated, setAuthenticationStatus, setIsAuthenticating})
             <nav className="nav-bar">
                 <h1 className="">Logo Foodstock</h1>
                 <div id="Links" className="ml-auto hidden sm:block">
-                    <Link to="/" className="btn-nav">  Home </Link>
-                    <Link to="/search" className="btn-nav">Search</Link>
-                    <Link to="/rewards" className="btn-nav">Rewards</Link>
+                    <Link to="/"  className="btn-nav">  Home </Link>
+                    <Link to="/search"  className="btn-nav">Search</Link>
+                    <Link to="/rewards"  className="btn-nav">Rewards</Link>
                 </div>
                 <div className=" xxs:ml-56 xs:ml-80 sm:hidden">
                     <button onClick={onMenuClick} className=" focus:outline-none active:outline-none">
