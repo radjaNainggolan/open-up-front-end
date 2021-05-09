@@ -10,7 +10,7 @@ const EditProduct = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [errOpen, setErrOpen] = useState(false);
 
   useEffect(() => {
@@ -102,7 +102,7 @@ const EditProduct = () => {
       <Dialog
         as="div"
         className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
-        open={true}
+        open={isOpen}
         onClose={() => setIsOpen(false)}
       >
         <div className="z-20 grid justify-items-center">
@@ -116,8 +116,8 @@ const EditProduct = () => {
           <button
             className="px-5 rounded-xl focus:outline-none bg-red-500 hover:ring-2 hover:ring-amber-500"
             onClick={() => {
-              // setIsOpen(false);
-              history.push(`/product/${id}`, { success: true });
+              setIsOpen(false);
+              history.push(`/product/${id}`);
             }}
           >
             OK
@@ -131,7 +131,7 @@ const EditProduct = () => {
     return (
       <Dialog
         as="div"
-        className="grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10 absolute"
+        className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
         open={errOpen}
         onClose={() => setErrOpen(false)}
       >
@@ -200,8 +200,8 @@ const EditProduct = () => {
     API.graphql(graphqlOperation(updateProduct, { input: product }))
       .then((res) => {
         //alert("shit");
-        // setIsOpen(true);
-        history.push(`/product/${id}`, { success: true });
+        setIsOpen(true);
+        //history.push(`/product/${id}`, { success: true });
       })
       .catch((err) => {
         alert(JSON.stringify(err, null, 4));
@@ -211,7 +211,7 @@ const EditProduct = () => {
 
   return (
     <div className="grid justify-items-center">
-      {/*{isOpen && <Notice />}*/}
+      {isOpen && <Notice />}
       {errOpen && <Error />}
       {products && !loading && (
         <div className="rounded-xl z-0 text-white font-karla grid justify-items-center">
