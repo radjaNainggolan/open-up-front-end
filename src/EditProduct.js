@@ -77,6 +77,7 @@ const EditProduct = () => {
       setIngredients(products.description.ingredients);
       setMaintenance(products.description.maintenance);
       setProducer(products.description.producer);
+      setAdditionalInformation(products.description.additionalInformation);
       setDiscountAmount(products.currentPrice.discountAmount);
       setDiscountEndDate(products.currentPrice.discountEndDate);
       setDiscountStartDate(products.currentPrice.discountStartDate);
@@ -104,6 +105,7 @@ const EditProduct = () => {
         className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
         open={isOpen}
         onClose={() => setIsOpen(false)}
+        
       >
         <div className="z-20 grid justify-items-center">
           <Dialog.Title className="text-2xl font-karla">
@@ -134,6 +136,7 @@ const EditProduct = () => {
         className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
         open={errOpen}
         onClose={() => setErrOpen(false)}
+        
       >
         <Dialog.Title className="text-2xl font-karla">
           Ohh, something went wrong...

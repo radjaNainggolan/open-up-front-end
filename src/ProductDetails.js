@@ -1,19 +1,19 @@
 import { useParams } from "react-router";
-import { Link, useLocation } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { getProduct } from "./graphql/queries";
-import Notification, { NotificationTypes } from "./Notification";
+
 
 const ProductDetails = () => {
-  const location = useLocation();
+  
 
   const { id } = useParams();
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [isOpen, setIsOpen] = useState(location.state?.success || false);
+  
 
   useEffect(() => {
     fetchProduct();
@@ -42,25 +42,20 @@ const ProductDetails = () => {
 
   return (
     <div>
-      {isOpen && (
-        <Notification
-          type={NotificationTypes.SUCCESS}
-          title="Changes were accepted!"
-          message="You have successfully modified the product"
-          onClose={() => setIsOpen(false)}
-        />
-      )}
+      
       {products && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
-          <div className="w-60 h-80  margin-auto bg-gradient-to-br from-amber-400 to-red-400 rounded-xl mt-10 mb-5 ">
+          <div 
+          className="grid justify-items-center md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10 my-5 md:items-center"
+          >
             <img
               src={products.images ? products.images[0] : null}
               alt="error"
-              className=""
+              className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80 my-5"
             />
-          </div>
+          
 
-          <div className="w-96 text-center font-karla font-semibold text-white text-base h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+          <div className="w-80 h-80 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
             <h1 className="text-3xl">{products.name}</h1>
             <br />
             <ul>
@@ -77,7 +72,15 @@ const ProductDetails = () => {
               </li>
             </ul>
           </div>
-
+          <div>
+            <Link
+              to={`/edit/${id}`}
+              className="my-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla hover:ring-2 hover:ring-amber-500 font-semibold text-lg text-white"
+            >
+              Edit
+            </Link>
+          </div>
+        </div>
           <div className="hidden xs:block mb-5">
             <table className="table ">
               <tbody className="">
@@ -175,7 +178,7 @@ const ProductDetails = () => {
                       />
                       <h4 className="font-karla font-semibold text-base">
                         Fibers
-                      </h4>
+                      </h4> 
                       <h5>{products.nutritionalValues.fibers} (g)</h5>
                     </div>
                   </td>
@@ -196,8 +199,13 @@ const ProductDetails = () => {
               </tbody>
             </table>
           </div>
+        
+        <div
+        className="grid justify-items-center sm:space-x-6 md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10  md:items-baseline"
+        >
 
-          <div className="w-full text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+        
+          <div className="w-80 text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
             <ul>
               <h1 className="text-2xl">On 100 g:</h1>
               <br />
@@ -221,9 +229,11 @@ const ProductDetails = () => {
             </ul>
           </div>
 
-          <div className="w-full text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+          <div className="w-80 text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
             <ul>
               <h1 className="text-2xl">Description:</h1>
+              <br />
+              <li>Addiotional informations: {products.description.additionalInformation}</li>
               <br />
               <li>Alcohol: {products.description.alcohol} </li>
               <br />
@@ -245,7 +255,9 @@ const ProductDetails = () => {
             </ul>
           </div>
 
-          <div className="w-full h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
+        
+
+          <div className="w-80 h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
             <ul>Date: {products.currentPrice.date} </ul>
             <br />
             <ul>Discount amount: {products.currentPrice.discountAmount} </ul>
@@ -265,15 +277,8 @@ const ProductDetails = () => {
             <ul>Store: {products.store} </ul>
             <br />
           </div>
-
-          <div>
-            <Link
-              to={`/edit/${id}`}
-              className="mt-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla font-semibold text-lg text-white"
-            >
-              Edit
-            </Link>
-          </div>
+        </div>
+        
         </div>
       )}
     </div>
