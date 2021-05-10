@@ -58,7 +58,7 @@ const ProductDetails = () => {
           <div className="w-80 h-60 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
             <h1 className="text-3xl">{products.name}</h1>
             <br />
-            <ul>
+            <ul className="mb-10">
               <li>
                 Brief description:
                 <br />
@@ -71,15 +71,16 @@ const ProductDetails = () => {
                 Nutri-score: <span>{products.nutriScore}</span>
               </li>
             </ul>
+            <div className="mt-2">
+              <Link
+                to={`/edit/${id}`}
+                className="my-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla hover:ring-2 hover:ring-amber-500 font-semibold text-lg text-white"
+              >
+                Edit
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link
-              to={`/edit/${id}`}
-              className="my-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla hover:ring-2 hover:ring-amber-500 font-semibold text-lg text-white"
-            >
-              Edit
-            </Link>
-          </div>
+          
         </div>
         <div className="text-3xl text-amber-500 my-5"><h1>On 100 g</h1></div>
           <div className="hidden xs:block mb-5">
