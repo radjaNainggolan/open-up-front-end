@@ -44,7 +44,7 @@ const ProductDetails = () => {
     <div>
       
       {products && !loading && (
-        <div className="grid justify-items-center mb-16 grid-cols-1 ">
+      <div className="grid justify-items-center mb-16 grid-cols-1 ">
           <div 
           className="grid justify-items-center md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10 my-5 md:items-center"
           >
@@ -55,7 +55,7 @@ const ProductDetails = () => {
             />
           
 
-          <div className="w-80 h-80 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
+          <div className="w-80 h-60 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
             <h1 className="text-3xl">{products.name}</h1>
             <br />
             <ul>
@@ -81,6 +81,7 @@ const ProductDetails = () => {
             </Link>
           </div>
         </div>
+        <div className="text-3xl text-amber-500 my-5"><h1>On 100 g</h1></div>
           <div className="hidden xs:block mb-5">
             <table className="table ">
               <tbody className="">
@@ -200,36 +201,33 @@ const ProductDetails = () => {
             </table>
           </div>
         
+        
         <div
         className="grid justify-items-center sm:space-x-6 md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10  md:items-baseline"
         >
 
-        
-          <div className="w-80 text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+          <div className="w-96 h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
+            <ul>Date: {products.currentPrice.date} </ul>
+            <br />
+            <ul>Discount amount: {products.currentPrice.discountAmount} </ul>
+            <br />
+            <ul>Discount end date: {products.currentPrice.discountEndDate} </ul>
+            <br />
+            <ul>Discount price: {products.currentPrice.discountPrice} </ul>
+            <br />
             <ul>
-              <h1 className="text-2xl">On 100 g:</h1>
-              <br />
-              <li>Energy: {products.nutritionalValues.energy} (KJ/kcal)</li>
-              <br />
-              <li>Fats: {products.nutritionalValues.fats} (g)</li>
-              <br />
-              <li>
-                Saturated fats: {products.nutritionalValues.saturatedFats} (g)
-              </li>
-              <br />
-              <li>Proteins: {products.nutritionalValues.proteins} (g)</li>
-              <br />
-              <li>Crabonhydrates: {products.nutritionalValues.carbs} (g)</li>
-              <br />
-              <li>Sugar: {products.nutritionalValues.sugar} (g)</li>
-              <br />
-              <li>Fibers: {products.nutritionalValues.fibers} (g)</li>
-              <br />
-              <li>Salt: {products.nutritionalValues.salt} (g)</li>
+              Dsicount start date: {products.currentPrice.discountStartDate}{" "}
             </ul>
+            <br />
+            <ul>Regular price: {products.currentPrice.regularPrice} </ul>
+            <br />
+            <ul>Barcode: {products.barcode} </ul>
+            <br />
+            <ul>Store: {products.store} </ul>
+            <br />
           </div>
 
-          <div className="w-80 text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+          <div className="max-w-lg text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
             <ul>
               <h1 className="text-2xl">Description:</h1>
               <br />
@@ -255,31 +253,10 @@ const ProductDetails = () => {
             </ul>
           </div>
 
-        
 
-          <div className="w-80 h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
-            <ul>Date: {products.currentPrice.date} </ul>
-            <br />
-            <ul>Discount amount: {products.currentPrice.discountAmount} </ul>
-            <br />
-            <ul>Discount end date: {products.currentPrice.discountEndDate} </ul>
-            <br />
-            <ul>Discount price: {products.currentPrice.discountPrice} </ul>
-            <br />
-            <ul>
-              Dsicount start date: {products.currentPrice.discountStartDate}{" "}
-            </ul>
-            <br />
-            <ul>Regular price: {products.currentPrice.regularPrice} </ul>
-            <br />
-            <ul>Barcode: {products.barcode} </ul>
-            <br />
-            <ul>Store: {products.store} </ul>
-            <br />
-          </div>
         </div>
         
-        </div>
+      </div>
       )}
     </div>
   );
