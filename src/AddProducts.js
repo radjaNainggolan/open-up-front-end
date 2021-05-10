@@ -40,7 +40,8 @@ const AddProduct = () => {
     return (
       <Dialog
         as="div"
-        className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"        open={isOpen}
+        className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
+        open={isOpen}
         onClose={() => setIsOpen(false)}
       >
         <Dialog.Title className="text-2xl font-karla">
@@ -67,7 +68,8 @@ const AddProduct = () => {
     return (
       <Dialog
         as="div"
-        className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"        open={errOpen}
+        className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
+        open={errOpen}
         onClose={() => setErrOpen(false)}
       >
         <Dialog.Title className="text-2xl font-karla">
