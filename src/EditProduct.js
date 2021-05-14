@@ -472,6 +472,7 @@ const EditProduct = () => {
                 onChange={(e) => setDate(e.target.value)}
                 className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5"
                 type="date"
+                placeholder="dd-mm-yyyy"
               />
             </div>
             <div className="mt-5 ml-6 text-lg">
@@ -523,6 +524,7 @@ const EditProduct = () => {
                 onChange={(e) => setDiscountStartDate(e.target.value)}
                 className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5"
                 type="date"
+                placeholder="dd-mm-yyyy"
               />
             </div>
             <div className="mt-5 ml-6 text-lg">
@@ -534,6 +536,7 @@ const EditProduct = () => {
                 onChange={(e) => setDiscountEndDate(e.target.value)}
                 className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5"
                 type="date"
+                placeholder="dd-mm-yyyy"
               />
             </div>
 

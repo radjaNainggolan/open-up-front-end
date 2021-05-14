@@ -228,7 +228,7 @@ const ProductDetails = () => {
             <br />
           </div>
 
-          <div className="max-w-lg text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
+          <div className="min-w-lg max-w-lg text-center font-karla font-semibold text-white text-xl h-max bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 mb-5 ">
             <ul>
               <h1 className="text-2xl">Description:</h1>
               <br />
@@ -251,6 +251,7 @@ const ProductDetails = () => {
               <li>Maintenance: {products.description.maintenance}</li>
               <br />
               <li>Producer: {products.description.producer}</li>
+              
             </ul>
           </div>
 
