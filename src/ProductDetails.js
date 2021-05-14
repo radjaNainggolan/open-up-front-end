@@ -1,35 +1,97 @@
 import { useParams } from "react-router";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { getProduct } from "./graphql/queries";
-
-
+import { Carousel } from "react-responsive-carousel";
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // required import for Carousel
+                                                                // image slider.
+                                                                
 const ProductDetails = () => {
-  
-
   const { id } = useParams();
 
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState(undefined);
   const [loading, setLoading] = useState(true);
-
-  
 
   useEffect(() => {
     fetchProduct();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Render the Carousel image slider
+  const renderImageSlider = () => {
+    if(!product.images || product.images.length === 0) {
+      return (
+        <>
+        </>
+      );
+    }
+
+    return (
+      <div style = {{width: "30%", height: "50%"}}>
+        <Carousel 
+        showThumbs = {false} 
+        showStatus = {false}
+        >
+          {product.images.map(image => (
+                <img 
+                key = {image}
+                src = {image} 
+                alt = "Doest not exist"
+                className= "rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80 my-5" />
+            ))}
+        </Carousel>
+      </div>
+    )
+  };
+
+  /*
+    Generates data for BarChart component basend on nutritional values of the product, in the
+    appropriate form. Resulting data is a list of objects, each of the form:
+      {
+        dataKey: some value,
+        valueKey: another value
+      }
+    Also, only basic nutrients are taken into consideration.
+  */
+  const generateBarChartData = () => {
+    const nutritionalValues = product.nutritionalValues;
+    const pieChartData = [];
+
+    Object.keys(nutritionalValues).forEach((key) => {
+      if(key !== "energy" && key !== "saturatedFats" && key !== "sugar" && nutritionalValues[key] !== 0 
+      && nutritionalValues[key] !== "") {
+        pieChartData.push({ name: key, "ammount on 100 grams": nutritionalValues[key] });
+      }
+    });
+
+    console.log(pieChartData);
+    return pieChartData;
+  }
+
   async function fetchProduct() {
     try {
       setLoading(true);
-      const productsData = await API.graphql(
+      const productData = await API.graphql(
         graphqlOperation(getProduct, { id: id })
       );
-      const produ = productsData.data.getProduct;
-      setProducts(produ);
+
+      const prod = productData.data.getProduct;
+
+      // Remove duplicate pictures for products from IDEA
+      if(prod.store === "idea") {
+        const regex = /_[123456789]\d*[l][.](jpg|jpeg|png)/;
+        const newImages = prod.images.filter(image => (regex.test(image)));
+        prod.images = newImages;
+      }
+
+      setProduct(prod);
       setLoading(false);
-    } catch (err) {
+    } 
+    
+    catch (err) {
+      console.log(err);
       alert(err.status);
     }
   }
@@ -43,32 +105,35 @@ const ProductDetails = () => {
   return (
     <div>
       
-      {products && !loading && (
+      {product && !loading && (
       <div className="grid justify-items-center mb-16 grid-cols-1 ">
           <div 
           className="grid justify-items-center md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10 my-5 md:items-center"
           >
-            <img
-              src={products.images ? products.images[0] : null}
+
+          {renderImageSlider()}
+
+            {/* <img
+              src={product.images ? products.images[0] : null}
               alt="error"
               className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80 my-5"
-            />
+            /> */}
           
 
           <div className="w-80 h-60 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
-            <h1 className="text-3xl">{products.name}</h1>
+            <h1 className="text-3xl">{product.name}</h1>
             <br />
             <ul className="mb-10">
               <li>
                 Brief description:
                 <br />
-                {products.briefDescription}
+                {product.briefDescription}
               </li>
               <br />
-              <li>Category: {products.category}</li>
+              <li>Category: {product.category}</li>
               <br />
               <li>
-                Nutri-score: <span>{products.nutriScore}</span>
+                Nutri-score: <span>{product.nutriScore}</span>
               </li>
             </ul>
             <div className="mt-2">
@@ -80,6 +145,16 @@ const ProductDetails = () => {
               </Link>
             </div>
           </div>
+          
+          {/* Generate a BarChart based on the nutrients of the current product */}
+          <BarChart width = {730} height = {250} data = { generateBarChartData() }>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey = "name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey = "ammount on 100 grams" fill = "#eb8542" />
+          </BarChart>
           
         </div>
         <div className="text-3xl text-amber-500 my-5"><h1>On 100 g</h1></div>
@@ -98,7 +173,7 @@ const ProductDetails = () => {
                         {" "}
                         Energy
                       </h4>
-                      <h5>{products.nutritionalValues.energy} (kJ/kcal)</h5>
+                      <h5>{product.nutritionalValues.energy} (kJ/kcal)</h5>
                     </div>
                   </td>
 
@@ -112,7 +187,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Fats
                       </h4>
-                      <h5>{products.nutritionalValues.fats} (g)</h5>
+                      <h5>{product.nutritionalValues.fats} (g)</h5>
                     </div>
                   </td>
                   <td className="border-r-2 solid border-amber-500 w-44 h-36">
@@ -125,7 +200,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Saturated fats
                       </h4>
-                      <h5>{products.nutritionalValues.saturatedFats} (g)</h5>
+                      <h5>{product.nutritionalValues.saturatedFats} (g)</h5>
                     </div>
                   </td>
                   <td className="w-44 h-36">
@@ -138,7 +213,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Proteins
                       </h4>
-                      <h5>{products.nutritionalValues.proteins} (g)</h5>
+                      <h5>{product.nutritionalValues.proteins} (g)</h5>
                     </div>
                   </td>
                 </tr>
@@ -154,7 +229,7 @@ const ProductDetails = () => {
                         {" "}
                         <span> Carbohydrates </span>
                       </h4>
-                      <h5>{products.nutritionalValues.carbs} (g)</h5>
+                      <h5>{product.nutritionalValues.carbs} (g)</h5>
                     </div>
                   </td>
 
@@ -168,7 +243,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Sugar
                       </h4>
-                      <h5>{products.nutritionalValues.sugar} (g)</h5>
+                      <h5>{product.nutritionalValues.sugar} (g)</h5>
                     </div>
                   </td>
                   <td className="border-r-2 solid border-amber-500 w-44 h-36">
@@ -181,7 +256,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Fibers
                       </h4> 
-                      <h5>{products.nutritionalValues.fibers} (g)</h5>
+                      <h5>{product.nutritionalValues.fibers} (g)</h5>
                     </div>
                   </td>
                   <td className="w-44 h-36">
@@ -194,7 +269,7 @@ const ProductDetails = () => {
                       <h4 className="font-karla font-semibold text-base">
                         Salt
                       </h4>
-                      <h5>{products.nutritionalValues.salt}(g)</h5>
+                      <h5>{product.nutritionalValues.salt}(g)</h5>
                     </div>
                   </td>
                 </tr>
@@ -208,23 +283,23 @@ const ProductDetails = () => {
         >
 
           <div className="w-96 h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
-            <ul>Date: {products.currentPrice.date} </ul>
+            <ul>Date: {product.currentPrice.date} </ul>
             <br />
-            <ul>Discount amount: {products.currentPrice.discountAmount} </ul>
+            <ul>Discount amount: {product.currentPrice.discountAmount} </ul>
             <br />
-            <ul>Discount end date: {products.currentPrice.discountEndDate} </ul>
+            <ul>Discount end date: {product.currentPrice.discountEndDate} </ul>
             <br />
-            <ul>Discount price: {products.currentPrice.discountPrice} </ul>
+            <ul>Discount price: {product.currentPrice.discountPrice} </ul>
             <br />
             <ul>
-              Dsicount start date: {products.currentPrice.discountStartDate}{" "}
+              Dsicount start date: {product.currentPrice.discountStartDate}{" "}
             </ul>
             <br />
-            <ul>Regular price: {products.currentPrice.regularPrice} </ul>
+            <ul>Regular price: {product.currentPrice.regularPrice} </ul>
             <br />
-            <ul>Barcode: {products.barcode} </ul>
+            <ul>Barcode: {product.barcode} </ul>
             <br />
-            <ul>Store: {products.store} </ul>
+            <ul>Store: {product.store} </ul>
             <br />
           </div>
 
@@ -232,25 +307,25 @@ const ProductDetails = () => {
             <ul>
               <h1 className="text-2xl">Description:</h1>
               <br />
-              <li>Addiotional informations: {products.description.additionalInformation}</li>
+              <li>Addiotional informations: {product.description.additionalInformation}</li>
               <br />
-              <li>Alcohol: {products.description.alcohol} </li>
+              <li>Alcohol: {product.description.alcohol} </li>
               <br />
-              <li>Allergens: {products.description.allergens} </li>
+              <li>Allergens: {product.description.allergens} </li>
               <br />
               <li>
-                Country of origin: {products.description.countryOfOrigin}{" "}
+                Country of origin: {product.description.countryOfOrigin}{" "}
               </li>
               <br />
-              <li>Expiry date: {products.description.expiryDate}</li>
+              <li>Expiry date: {product.description.expiryDate}</li>
               <br />
-              <li>Imports: {products.description.imports}</li>
+              <li>Imports: {product.description.imports}</li>
               <br />
-              <li>Ingredients: {products.description.ingredients}</li>
+              <li>Ingredients: {product.description.ingredients}</li>
               <br />
-              <li>Maintenance: {products.description.maintenance}</li>
+              <li>Maintenance: {product.description.maintenance}</li>
               <br />
-              <li>Producer: {products.description.producer}</li>
+              <li>Producer: {product.description.producer}</li>
             </ul>
           </div>
 
