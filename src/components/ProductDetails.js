@@ -119,7 +119,7 @@ const ProductDetails = () => {
     <div>
       {product && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
-          <div className="grid justify-items-center md:flex md:flex-wrap md:mt-10 md:mb-5 md:space-x-10 my-5 md:items-center">
+          <div className="grid justify-items-center md:flex md:flex-wrap md:mt-10 md:mb-5 md:space-x-10 my-5 md:place-items-center">
             <div>
               <RenderImageSlider></RenderImageSlider>
             </div>
@@ -291,22 +291,29 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="grid justify-items-center sm:space-x-6 md:flex md:flex-wrap md:mt-5 md:mb-5 md:space-x-10  md:items-baseline">
-            <div className="w-96 h-max bg-gradient-to-l justify-items-start rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
+            <div className="w-96 h-max bg-gradient-to-l grid justify-items-center rounded-xl text-center font-karla font-semibold text-white text-xl from-amber-400 to-red-400 py-5 mb-5 ">
               <ul>Date: {product.currentPrice.date} </ul>
               <br />
-              <ul>Discount amount: {product.currentPrice.discountAmount} </ul>
+              <ul>
+                Discount amount: {product.currentPrice.discountAmount}{" "}
+                {"\u20AC"}{" "}
+              </ul>
               <br />
               <ul>
                 Discount end date: {product.currentPrice.discountEndDate}{" "}
               </ul>
               <br />
-              <ul>Discount price: {product.currentPrice.discountPrice} </ul>
+              <ul>
+                Discount price: {product.currentPrice.discountPrice} {"\u20AC"}
+              </ul>
               <br />
               <ul>
                 Dsicount start date: {product.currentPrice.discountStartDate}{" "}
               </ul>
               <br />
-              <ul>Regular price: {product.currentPrice.regularPrice} </ul>
+              <ul>
+                Regular price: {product.currentPrice.regularPrice} {"\u20AC"}{" "}
+              </ul>
               <br />
               <ul>Barcode: {product.barcode} </ul>
               <br />

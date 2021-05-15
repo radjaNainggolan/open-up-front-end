@@ -8,6 +8,8 @@ import NavBar from "./NavBar";
 import ProductDetails from "./ProductDetails";
 import Search from "./Search";
 import SignUp from "./SignUp";
+import Contacts from "./Contacts";
+import Home from "./Home";
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
@@ -51,6 +53,9 @@ function App() {
             setIsAuthenticating={setIsAuthenticating}
           ></NavBar>
           <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
             <Route exact path="/search">
               <Search
                 isAuthenticated={isAuthenticated}
@@ -87,6 +92,7 @@ function App() {
               ></LogIn>
             </Route>
           </Switch>
+          <Contacts></Contacts>
         </div>
       </Router>
     )

@@ -93,8 +93,7 @@ const NavBar = ({
         <h1 className="">Logo Foodstock</h1>
         <div id="Links" className="ml-auto hidden sm:block">
           <Link to="/" className="btn-nav">
-            {" "}
-            Home{" "}
+            Home
           </Link>
           <Link to="/search" className="btn-nav">
             Search
