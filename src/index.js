@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./base.css"; // base has to be imported before other css files!
-import "./index.css";
-import App from "./App";
+import "./css/base.css"; // base has to be imported before other css files!
+import "./css/index.css";
+import App from "./components/App";
 import { Amplify } from "aws-amplify";
 import { cognitoconfig, appsynconfig } from "./config";
 

@@ -3,7 +3,7 @@ import ProductsList from "./ProductsList";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
-import { getAllProducts, search } from "./graphql/queries";
+import { getAllProducts, search } from "../graphql/queries";
 
 const Search = () => {
   const [products, setProducts] = useState([]);
@@ -94,7 +94,7 @@ const Search = () => {
           nextClassName="paging "
           nextLinkClassName="outline-none"
           previousLinkClassName="outline-none"
-          activeClassName="bg-red-500"
+          activeClassName="paging"
           activeLinkClassName="outline-none"
           pageClassName="hidden sm:block paging"
           pageLinkClassName="outline-none"

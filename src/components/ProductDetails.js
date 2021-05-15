@@ -1,19 +1,19 @@
+import { API, graphqlOperation } from "aws-amplify";
+import { useEffect, useState } from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // required import for Carousel
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import { getProduct } from "./graphql/queries";
-import { Carousel } from "react-responsive-carousel";
 import {
+  Bar,
   BarChart,
   CartesianGrid,
+  Legend,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Legend,
-  Bar,
 } from "recharts";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // required import for Carousel
+import { getProduct } from "../graphql/queries";
 // image slider.
 
 const ProductDetails = () => {
@@ -44,7 +44,8 @@ const ProductDetails = () => {
             <img
               key={image}
               src={image}
-              alt="Doest not exist"
+              alt="error"
+              imageAlt="Doest not exist"
               className="my-5 w-72 h-72"
             />
           ))}

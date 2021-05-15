@@ -1,13 +1,13 @@
-import NavBar from "./NavBar";
-import Search from "./Search";
-import ProductDetails from "./ProductDetails";
+import { Auth } from "aws-amplify";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddProduct from "./AddProducts";
-import EditProduct from "./EditProduct.js";
-import SignUp from "./SignUp.js";
-import LogIn from "./LogIn.js";
-import React, { useState, useEffect } from "react";
-import { Auth } from "aws-amplify";
+import EditProduct from "./EditProduct";
+import LogIn from "./LogIn";
+import NavBar from "./NavBar";
+import ProductDetails from "./ProductDetails";
+import Search from "./Search";
+import SignUp from "./SignUp";
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
@@ -24,7 +24,7 @@ function App() {
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-  
+
   useEffect(() => {
     onLoad();
   }, []);

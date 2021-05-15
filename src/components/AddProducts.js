@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
-import { createProduct } from "./graphql/mutations";
+import { createProduct } from "../graphql/mutations";
 import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
   const [briefDescription, setbriefDescription] = useState("");
@@ -43,7 +43,6 @@ const AddProduct = () => {
         className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
         open={isOpen}
         onClose={() => setIsOpen(false)}
-      
       >
         <Dialog.Title className="text-2xl font-karla">
           Successfully submited!
@@ -72,7 +71,6 @@ const AddProduct = () => {
         className="overflow-auto fixed top-2 right-4 ring-2 ring-red-500 grid justify-items-center text-white bg-amber-500 rounded-xl px-5 py-5 w-max h-max z-10"
         open={errOpen}
         onClose={() => setErrOpen(false)}
-        
       >
         <Dialog.Title className="text-2xl font-karla">
           Ohh, something went wrong...
