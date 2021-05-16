@@ -34,23 +34,21 @@ const ProductDetails = () => {
     }
 
     return (
-      <div>
-        <Carousel
-          showThumbs={false}
-          showStatus={false}
-          className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80"
-        >
-          {product.images.map((image) => (
-            <img
-              key={image}
-              src={image}
-              alt="error"
-              imageAlt="Doest not exist"
-              className="my-5 w-72 h-72"
-            />
-          ))}
-        </Carousel>
-      </div>
+      <Carousel
+        showThumbs={false}
+        showStatus={false}
+        className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80"
+      >
+        {product.images.map((image) => (
+          <img
+            key={image}
+            src={image}
+            alt="error"
+            imageAlt="Doest not exist"
+            className="my-5 w-72 h-72"
+          />
+        ))}
+      </Carousel>
     );
   };
 
@@ -111,7 +109,13 @@ const ProductDetails = () => {
 
   if (loading) {
     return (
-      <h1 className="text-2xl grid justify-items-center mt-48">Loading ...</h1>
+      <div class="h-8 my-48 flex justify-center items-center">
+        <div class="bg-amber-500 p-5 rounded-full flex space-x-3 duration-1000 ">
+          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
+          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
+          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+        </div>
+      </div>
     );
   }
 
@@ -120,31 +124,26 @@ const ProductDetails = () => {
       {product && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
           <div className="grid justify-items-center md:flex md:flex-wrap md:mt-10 md:mb-5 md:space-x-10 my-5 md:place-items-center">
-            <div>
-              <RenderImageSlider></RenderImageSlider>
-            </div>
+            <RenderImageSlider></RenderImageSlider>
+
             {/* <img
               src={product.images ? products.images[0] : null}
               alt="error"
               className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80 my-5"
             /> */}
-            <div className="w-80 h-60 text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
-              <h1 className="text-3xl">{product.name}</h1>
-              <br />
-              <ul className="mb-10">
-                <li>
-                  Brief description:
-                  <br />
-                  {product.briefDescription}
+            <div className="grid justify-items-center">
+              <ul className="w-96 h-max text-center font-karla font-semibold text-white text-base bg-gradient-to-l rounded-xl from-amber-400 to-red-400 py-5 my-5 ">
+                <h1 className="text-3xl">{product.name}</h1>
+                <br />
+                <li className="">
+                  Brief description: {product.briefDescription}
                 </li>
                 <br />
                 <li>Category: {product.category}</li>
                 <br />
-                <li>
-                  Nutri-score: <span>{product.nutriScore}</span>
-                </li>
+                <li>Nutri-score: {product.nutriScore}</li>
               </ul>
-              <div className="mt-2">
+              <div>
                 <Link
                   to={`/edit/${id}`}
                   className="my-5 px-6 rounded-xl focus:outline-none bg-red-500 font-karla hover:ring-2 hover:ring-amber-500 font-semibold text-lg text-white"

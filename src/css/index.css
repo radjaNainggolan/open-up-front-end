@@ -4,7 +4,7 @@
 
 @layer components {
   .btn-nav {
-    @apply mx-2 px-2 sm:mx-2 sm:px-2 md:mx-5 md:px-8 bg-white text-red-500
+    @apply mx-2 px-2 sm:mx-2 sm:px-2 md:mx-5 md:px-2 md:w-44 bg-white text-red-500
     font-semibold rounded-xl transform delay-100 hover:ring-red-500 hover:ring-2;
   }
 

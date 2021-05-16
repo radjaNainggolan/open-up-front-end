@@ -10,34 +10,36 @@ const Search = () => {
   const [loading, setLoading] = useState(true);
   const [SEARCH, setSearch] = useState("");
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        setLoading(true);
-        const productsData = await API.graphql(
-          graphqlOperation(getAllProducts)
-        );
-        const produ = productsData.data.getAllProducts;
-        setProducts(produ);
-        setLoading(false);
-      } catch (err) {
-        alert(err.toString());
-      }
+  async function fetchProducts() {
+    try {
+      setLoading(true);
+      const productsData = await API.graphql(graphqlOperation(getAllProducts));
+      const produ = productsData.data.getAllProducts;
+      setProducts(produ);
+      setLoading(false);
+    } catch (err) {
+      alert(err.toString());
     }
+  }
+  useEffect(() => {
     fetchProducts();
   }, []);
 
   async function searchProds() {
-    try {
-      setLoading(true);
-      const productsData = await API.graphql(
-        graphqlOperation(search, { limit: 100000, query: SEARCH })
-      );
-      const produ = productsData.data.search.results;
-      setProducts(produ);
-      setLoading(false);
-    } catch (err) {
-      alert(JSON.stringify(err, null, 4));
+    if (SEARCH !== "") {
+      try {
+        setLoading(true);
+        const productsData = await API.graphql(
+          graphqlOperation(search, { limit: 100000, query: SEARCH })
+        );
+        const produ = productsData.data.search.results;
+        setProducts(produ);
+        setLoading(false);
+      } catch (err) {
+        alert(JSON.stringify(err, null, 4));
+      }
+    } else {
+      fetchProducts();
     }
   }
 
@@ -58,7 +60,10 @@ const Search = () => {
           <input
             type="text"
             value={SEARCH}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              searchProds();
+            }}
             className="input"
           />
           <br />
@@ -77,7 +82,15 @@ const Search = () => {
       </div>
 
       <div className="">
-        {products.length > 0 && (
+        {loading ? (
+          <div class="h-8 my-48 flex justify-center items-center">
+            <div class="bg-amber-500 p-5 rounded-full flex space-x-3 duration-500">
+              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
+              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
+              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+            </div>
+          </div>
+        ) : (
           <ProductsList data={currentProducts} loa={loading} />
         )}
       </div>

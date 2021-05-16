@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom";
 const ProductsList = ({ data, loa }) => {
-  if (loa) {
-    return <h1 className="font-karla ml-60 mt-96 ">Loading...</h1>;
-  }
-
   return (
     <div className="products-list">
       {data.map((product) => (
@@ -15,7 +11,7 @@ const ProductsList = ({ data, loa }) => {
           >
             <div className="w-40 h-40 rounded-xl">
               <img
-                className="mt-4 rounded-xl mb-5"
+                className="mt-4 w-40 h-40 rounded-xl mb-5"
                 src={product.images ? product.images[0] : null}
                 alt="error"
               />
