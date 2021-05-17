@@ -96,7 +96,9 @@ const NavBar = ({
             className="w-14 h-14 ml-3"
             alt=""
           />
-          <h1 className="text-3xl font-pattaya  text-red-600">Foodstock</h1>
+          <h1 className=" hidden xxs:block text-3xl font-pattaya  text-red-500">
+            Foodstock
+          </h1>
         </div>
         <div id="Links" className="ml-auto hidden sm:block">
           <Link to="/" className="btn-nav">
