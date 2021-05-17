@@ -263,6 +263,7 @@ module.exports = {
         '"Noto Color Emoji"',
       ],
       karla: ["Karla"],
+      pattaya: ["Pattaya"],
       serif: [
         "ui-serif",
         "Georgia",

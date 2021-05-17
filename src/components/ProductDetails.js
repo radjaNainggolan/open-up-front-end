@@ -40,13 +40,7 @@ const ProductDetails = () => {
         className="rounded-xl my-2 ring-amber-500 ring-4 w-80 h-80"
       >
         {product.images.map((image) => (
-          <img
-            key={image}
-            src={image}
-            alt="error"
-            imageAlt="Doest not exist"
-            className="my-5 w-72 h-72"
-          />
+          <img key={image} src={image} alt="error" className="my-5 w-72 h-72" />
         ))}
       </Carousel>
     );
@@ -109,11 +103,11 @@ const ProductDetails = () => {
 
   if (loading) {
     return (
-      <div class="h-8 my-48 flex justify-center items-center">
-        <div class="bg-amber-500 p-5 rounded-full flex space-x-3 duration-1000 ">
-          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
-          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
-          <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+      <div className="h-8 my-48 flex justify-center items-center">
+        <div className="bg-amber-500 p-5 rounded-full flex space-x-3 duration-1000 ">
+          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
+          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
+          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
         </div>
       </div>
     );

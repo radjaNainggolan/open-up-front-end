@@ -90,7 +90,14 @@ const NavBar = ({
   return (
     <div>
       <nav className="nav-bar">
-        <h1 className="">Logo Foodstock</h1>
+        <div className="flex flex-wrap items-center space-x-3">
+          <img
+            src="/images/bezkorpacropped.png"
+            className="w-14 h-14 ml-3"
+            alt=""
+          />
+          <h1 className="text-3xl font-pattaya  text-red-600">Foodstock</h1>
+        </div>
         <div id="Links" className="ml-auto hidden sm:block">
           <Link to="/" className="btn-nav">
             Home

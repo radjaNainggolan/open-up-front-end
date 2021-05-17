@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="grid justify-items-center">
-      <div className="grid justify-items-center md:flex md:items-center px-10 py-10 w-full space-x-40 bg-amber-200 rounded-xl my-10">
+      <div className="grid justify-items-center space-y-5 md:flex md:items-center px-10 py-10 w-full md:space-x-40 bg-amber-200 rounded-xl my-10">
         <img
           src="/images/home_image.jpg"
           alt="error"

@@ -26,20 +26,16 @@ const Search = () => {
   }, []);
 
   async function searchProds() {
-    if (SEARCH !== "") {
-      try {
-        setLoading(true);
-        const productsData = await API.graphql(
-          graphqlOperation(search, { limit: 100000, query: SEARCH })
-        );
-        const produ = productsData.data.search.results;
-        setProducts(produ);
-        setLoading(false);
-      } catch (err) {
-        alert(JSON.stringify(err, null, 4));
-      }
-    } else {
-      fetchProducts();
+    try {
+      setLoading(true);
+      const productsData = await API.graphql(
+        graphqlOperation(search, { limit: 100000, query: SEARCH })
+      );
+      const produ = productsData.data.search.results;
+      setProducts(produ);
+      setLoading(false);
+    } catch (err) {
+      alert(JSON.stringify(err, null, 4));
     }
   }
 
@@ -62,7 +58,6 @@ const Search = () => {
             value={SEARCH}
             onChange={(e) => {
               setSearch(e.target.value);
-              searchProds();
             }}
             className="input"
           />
@@ -83,11 +78,11 @@ const Search = () => {
 
       <div className="">
         {loading ? (
-          <div class="h-8 my-48 flex justify-center items-center">
-            <div class="bg-amber-500 p-5 rounded-full flex space-x-3 duration-500">
-              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
-              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
-              <div class="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+          <div className="h-8 my-48 flex justify-center items-center">
+            <div className="bg-amber-500 p-5 rounded-full flex space-x-3 duration-500">
+              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
+              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
+              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
             </div>
           </div>
         ) : (

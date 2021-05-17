@@ -46,7 +46,7 @@
     hover:ring-amber-500 text-center text-amber-500;
   }
   .nav-bar {
-    @apply bg-amber-500 rounded-b-xl p-3 items-center
+    @apply bg-amber-500 rounded-b-xl h-16 p-3 items-center
     flex m-auto font-karla text-lg text-white border-b-4 border-red-500;
   }
 
