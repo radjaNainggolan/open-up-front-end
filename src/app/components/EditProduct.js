@@ -3,7 +3,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { getProduct } from "../graphql/queries";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { updateProduct } from "../graphql/mutations";
+import { updateProduct } from "app/graphql/mutations";
 import { Dialog } from "@headlessui/react";
 
 const EditProduct = () => {

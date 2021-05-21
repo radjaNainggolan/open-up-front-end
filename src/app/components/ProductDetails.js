@@ -13,7 +13,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { getProduct } from "../graphql/queries";
+import { getProduct } from "app/graphql/queries";
 // image slider.
 
 const ProductDetails = () => {

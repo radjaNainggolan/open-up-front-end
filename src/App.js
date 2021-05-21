@@ -1,15 +1,15 @@
 import { Auth } from "aws-amplify";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AddProduct from "./AddProducts";
-import EditProduct from "./EditProduct";
-import LogIn from "./LogIn";
-import NavBar from "./NavBar";
-import ProductDetails from "./ProductDetails";
-import Search from "./Search";
-import SignUp from "./SignUp";
-import Contacts from "./Contacts";
-import Home from "./Home";
+import AddProduct from "app/components/AddProducts";
+import EditProduct from "app/components//EditProduct";
+import LogIn from "app/components//LogIn";
+import NavBar from "app/components//NavBar";
+import ProductDetails from "app/components//ProductDetails";
+import Search from "app/components//Search";
+import SignUp from "app/components//SignUp";
+import Contacts from "app/components//Contacts";
+import Home from "app/components//Home";
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop

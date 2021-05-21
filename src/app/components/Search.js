@@ -3,7 +3,7 @@ import ProductsList from "./ProductsList";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
-import { getAllProducts, search } from "../graphql/queries";
+import { getAllProducts, search } from "app/graphql/queries";
 
 const Search = () => {
   const [products, setProducts] = useState([]);

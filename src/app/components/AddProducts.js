@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
-import { createProduct } from "../graphql/mutations";
+import { createProduct } from "app/graphql/mutations";
 import { Dialog } from "@headlessui/react";
 const AddProduct = () => {
   const [briefDescription, setbriefDescription] = useState("");
