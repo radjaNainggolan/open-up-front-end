@@ -3,14 +3,15 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddProduct from "app/components/AddProducts";
 import EditProduct from "app/components//EditProduct";
-import LogIn from "app/components//LogIn";
-import NavBar from "app/components//NavBar";
-import ProductDetails from "app/components//ProductDetails";
-import Search from "app/components//Search";
-import SignUp from "app/components//SignUp";
-import Contacts from "app/components//Contacts";
-import Home from "app/components//Home";
-import ProductProvider, { ProductContext } from "app/components/ProductContext";
+import LogIn from "app/pages/LogIn";
+import NavBar from "app/components/NavBar";
+//import ProductDetails from "app/components/ProductDetails";
+import Search from "app/components/Search";
+import SignUp from "app/pages/SignUp";
+import Contacts from "app/components/Contacts";
+import ProductPage from "app/components/ProductPage";
+import Home from "app/pages/Home";
+import ProductProvider from "app/components/ProductContext";
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -22,7 +23,7 @@ import ProductProvider, { ProductContext } from "app/components/ProductContext";
 */
 
 function App() {
-  // Authentication staus state
+  // Authentication status state
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -46,7 +47,7 @@ function App() {
   return (
     !isAuthenticating && (
       <Router>
-        <div className="App">
+        <div style={{ background: "#6F5D83" }} className="App">
           <NavBar
             isAuthenticated={isAuthenticated}
             setAuthenticationStatus={setAuthenticationStatus}
@@ -54,7 +55,7 @@ function App() {
           ></NavBar>
           <Switch>
             <Route exact path="/">
-              <Home></Home>
+              <Home />
             </Route>
             <Route exact path="/search">
               <Search
@@ -63,16 +64,18 @@ function App() {
               ></Search>
             </Route>
             <Route exact path="/product/:id">
-              <ProductDetails
+              <ProductPage
                 isAuthenticated={isAuthenticated}
                 setAuthenticationStatus={setAuthenticationStatus}
-              ></ProductDetails>
+              ></ProductPage>
             </Route>
             <Route exact path="/new-product-form">
-              <AddProduct
-                isAuthenticated={isAuthenticated}
-                setAuthenticationStatus={setAuthenticationStatus}
-              ></AddProduct>
+              <ProductProvider>
+                <AddProduct
+                  isAuthenticated={isAuthenticated}
+                  setAuthenticationStatus={setAuthenticationStatus}
+                ></AddProduct>
+              </ProductProvider>
             </Route>
             <Route exact path="/edit/:id">
               <ProductProvider>
@@ -94,7 +97,7 @@ function App() {
               ></LogIn>
             </Route>
           </Switch>
-          <Contacts></Contacts>
+          <Contacts />
         </div>
       </Router>
     )

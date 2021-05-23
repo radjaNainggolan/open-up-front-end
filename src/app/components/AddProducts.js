@@ -1,36 +1,67 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import { createProduct } from "app/graphql/mutations";
 import { Dialog } from "@headlessui/react";
+import { ProductContext } from "app/components/ProductContext";
 const AddProduct = () => {
-  const [briefDescription, setbriefDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [date, setDate] = useState("");
-  const [discountAmount, setDiscountAmount] = useState(0);
-  const [discountEndDate, setDiscountEndDate] = useState(0);
-  const [discountPrice, setDiscountPrice] = useState(0);
-  const [discountStartDate, setDiscountStartDate] = useState(0);
-  const [regularPrice, setregularPrice] = useState(0);
-  const [additionalInformation, setAdditionalInformation] = useState("");
-  const [alcohol, setAlcohol] = useState("");
-  const [allergens, setAllergens] = useState("");
-  const [countryOfOrigin, setConutryOfOrigin] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
-  const [imports, setImports] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [maintenance, setMaintenance] = useState("");
-  const [producer, setProducer] = useState("");
-  const [name, setName] = useState("");
-  const [nutriScore, setNutriScore] = useState("");
-  const [carbs, setCarbs] = useState(0);
-  const [energy, setEnergy] = useState(0);
-  const [fats, setFats] = useState(0);
-  const [fibers, setFibers] = useState(0);
-  const [proteins, setProteins] = useState(0);
-  const [salt, setSalt] = useState(0);
-  const [saturatedFats, setSaturatedFats] = useState(0);
-  const [sugar, setSugar] = useState(0.0);
+  const context = useContext(ProductContext);
+  const {
+    briefDescription,
+    setBriefDescription,
+    category,
+    setCategory,
+    date,
+    setDate,
+    discountAmount,
+    setDiscountAmount,
+    discountEndDate,
+    setDiscountEndDate,
+    discountPrice,
+    setDiscountPrice,
+    discountStartDate,
+    setDiscountStartDate,
+    regularPrice,
+    setRegularPrice,
+    additionalInformation,
+    setAdditionalInformation,
+    alcohol,
+    setAlcohol,
+    allergens,
+    setAllergens,
+    countryOfOrigin,
+    setConutryOfOrigin,
+    expiryDate,
+    setExpiryDate,
+    imports,
+    setImports,
+    ingredients,
+    setIngredients,
+    maintenance,
+    setMaintenance,
+    producer,
+    setProducer,
+    name,
+    setName,
+    nutriScore,
+    setNutriScore,
+    carbs,
+    setCarbs,
+    energy,
+    setEnergy,
+    fats,
+    setFats,
+    fibers,
+    setFibers,
+    proteins,
+    setProteins,
+    salt,
+    setSalt,
+    saturatedFats,
+    setSaturatedFats,
+    sugar,
+    setSugar,
+  } = context;
 
   const [isOpen, setIsOpen] = useState(false);
   const [errOpen, setErrOpen] = useState(false);
@@ -168,7 +199,7 @@ const AddProduct = () => {
           </label>
           <input
             value={briefDescription}
-            onChange={(e) => setbriefDescription(e.target.value)}
+            onChange={(e) => setBriefDescription(e.target.value)}
             className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5"
             type="text"
           />
@@ -409,7 +440,7 @@ const AddProduct = () => {
           </label>
           <input
             value={regularPrice}
-            onChange={(e) => setregularPrice(e.target.value)}
+            onChange={(e) => setRegularPrice(e.target.value)}
             className="rounded-xl w-64 focus:outline-none px-3 text-red-500 ml-5"
             type="number"
             min="0"
