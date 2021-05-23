@@ -75,7 +75,7 @@ const Search = () => {
       <div className="">
         {loading ? (
           <div className="h-8 my-48 flex justify-center items-center">
-            <div className="bg-amber-500 p-5 rounded-full flex space-x-3 duration-500">
+            <div className="bg-green-100 p-5 rounded-full flex space-x-3 duration-500">
               <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
               <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
               <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
