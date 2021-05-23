@@ -4,7 +4,8 @@ import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import { getAllProducts, search } from "app/graphql/queries";
-
+import { BiSearchAlt2 } from "react-icons/bi";
+import { BsFilePlus } from "react-icons/bs";
 const Search = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -51,29 +52,24 @@ const Search = () => {
 
   return (
     <div className="">
-      <div className="search ">
-        <div>
-          <input
-            type="text"
-            value={SEARCH}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-            className="input"
-          />
-          <br />
-        </div>
-        <div className="">
-          <button className="find-btn" onClick={searchProds}>
-            Find
-          </button>
-        </div>
-        <br />
-        <div className="mt-3">
-          <Link to="/new-product-form" className="find-btn py-1">
-            New product
-          </Link>
-        </div>
+      <div className="search">
+        <input
+          type="text"
+          value={SEARCH}
+          placeholder="search"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          className="input"
+        />
+
+        <button className="find-btn" onClick={searchProds}>
+          <BiSearchAlt2></BiSearchAlt2>
+        </button>
+
+        <Link to="/new-product-form" className="find-btn">
+          <BsFilePlus className="w-10 h-10"></BsFilePlus>
+        </Link>
       </div>
 
       <div className="">
