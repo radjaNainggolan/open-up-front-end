@@ -10,7 +10,7 @@ import Search from "app/components//Search";
 import SignUp from "app/components//SignUp";
 import Contacts from "app/components//Contacts";
 import Home from "app/components//Home";
-
+import ProductProvider, { ProductContext } from "app/components/ProductContext";
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -75,10 +75,12 @@ function App() {
               ></AddProduct>
             </Route>
             <Route exact path="/edit/:id">
-              <EditProduct
-                isAuthenticated={isAuthenticated}
-                setAuthenticationStatus={setAuthenticationStatus}
-              ></EditProduct>
+              <ProductProvider>
+                <EditProduct
+                  isAuthenticated={isAuthenticated}
+                  setAuthenticationStatus={setAuthenticationStatus}
+                ></EditProduct>
+              </ProductProvider>
             </Route>
             <Route exact path="/sign-up">
               <SignUp
