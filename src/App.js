@@ -9,6 +9,7 @@ import ProductDetails from "app/components/ProductDetails";
 import Search from "app/components/Search";
 import SignUp from "app/pages/SignUp";
 import Contacts from "app/components/Contacts";
+import ProductPage from "app/components/ProductPage";
 import Home from "app/pages/Home";
 
 /* TODO: 
@@ -22,7 +23,7 @@ import Home from "app/pages/Home";
 */
 
 function App() {
-  // Authentication staus state
+  // Authentication status state
   const [isAuthenticated, setAuthenticationStatus] = useState(false);
   // isAuthenticating states is used to make authentication data throughout the session.
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -46,7 +47,9 @@ function App() {
   return (
     !isAuthenticating && (
       <Router>
-        <div style={{ background: "#6F5D83" }} className="App">
+        <ProductPage />
+
+        {/* <div style={{ background: "#6F5D83" }} className="App">
           <NavBar
             isAuthenticated={isAuthenticated}
             setAuthenticationStatus={setAuthenticationStatus}
@@ -92,8 +95,8 @@ function App() {
               ></LogIn>
             </Route>
           </Switch>
-          <Contacts></Contacts>
-        </div>
+          <Contacts />
+        </div> */}
       </Router>
     )
   );
