@@ -8,12 +8,7 @@ const NavBar = ({
   setAuthenticationStatus,
   setIsAuthenticating,
 }) => {
-  const [open, setOpen] = useState(false);
   const history = useHistory();
-
-  const onMenuClick = () => {
-    setOpen(!open);
-  };
 
   const logOut = async () => {
     await Auth.signOut();
