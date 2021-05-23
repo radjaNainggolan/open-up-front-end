@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddProduct from "app/components/AddProducts";
 import EditProduct from "app/components//EditProduct";
-import LogIn from "app/components//LogIn";
-import NavBar from "app/components//NavBar";
-import ProductDetails from "app/components//ProductDetails";
-import Search from "app/components//Search";
-import SignUp from "app/components//SignUp";
-import Contacts from "app/components//Contacts";
-import Home from "app/components//Home";
+import LogIn from "app/pages/LogIn";
+import NavBar from "app/components/NavBar";
+import ProductDetails from "app/components/ProductDetails";
+import Search from "app/components/Search";
+import SignUp from "app/pages/SignUp";
+import Contacts from "app/components/Contacts";
+import Home from "app/pages/Home";
 
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
@@ -46,7 +46,7 @@ function App() {
   return (
     !isAuthenticating && (
       <Router>
-        <div className="App">
+        <div style={{ background: "#6F5D83" }} className="App">
           <NavBar
             isAuthenticated={isAuthenticated}
             setAuthenticationStatus={setAuthenticationStatus}
@@ -54,7 +54,7 @@ function App() {
           ></NavBar>
           <Switch>
             <Route exact path="/">
-              <Home></Home>
+              <Home />
             </Route>
             <Route exact path="/search">
               <Search
