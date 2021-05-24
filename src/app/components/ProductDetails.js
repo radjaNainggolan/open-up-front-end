@@ -118,7 +118,7 @@ const ProductDetails = () => {
       {product && !loading && (
         <div className="grid justify-items-center mb-16 grid-cols-1 ">
           <div className="grid justify-items-center md:flex md:flex-wrap md:mt-10 md:mb-5 md:space-x-10 my-5 md:place-items-center">
-            <RenderImageSlider></RenderImageSlider>
+            <RenderImageSlider />
 
             {/* <img
               src={product.images ? products.images[0] : null}
