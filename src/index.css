@@ -28,11 +28,11 @@
   }
 
   .input {
-    @apply my-3 w-60 outline-none text-black  bg-white px-2 rounded-md font-karla sm:w-60;
+    @apply my-3 w-60 outline-none text-black bg-white pl-2 py-1 rounded-md font-karla sm:w-60;
   }
 
   .find-btn {
-    @apply hover:bg-black  hover:bg-opacity-10 py-1 px-5 rounded-md;
+    @apply hover:bg-black hover:bg-opacity-10 p-2 rounded-md;
   }
 
   .drop-down-nav {

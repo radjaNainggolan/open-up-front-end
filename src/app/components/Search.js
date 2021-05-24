@@ -52,7 +52,7 @@ const Search = () => {
 
   return (
     <div className="">
-      <div className="search">
+      <div className="flex flex-row items-center justify-center text-white mb-3">
         <input
           type="text"
           value={SEARCH}
@@ -60,25 +60,43 @@ const Search = () => {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          className="input"
+          className="my-3 md:w-60 outline-none text-black bg-white pl-2 py-1 rounded-md font-karla"
         />
 
-        <button className="find-btn" onClick={searchProds}>
+        <button
+          className="find-btn md:block hidden md:bg-none ml-2 mr-1"
+          onClick={searchProds}
+        >
+          <BiSearchAlt2></BiSearchAlt2>
+        </button>
+        <button
+          className="find-btn md:hidden md:bg-none bg-black bg-opacity-10 ml-2 mr-1"
+          onClick={searchProds}
+        >
           <BiSearchAlt2></BiSearchAlt2>
         </button>
 
-        <Link to="/new-product-form" className="find-btn">
-          <BsFilePlus className="w-10 h-10"></BsFilePlus>
+        <Link
+          to="/new-product-form"
+          className="find-btn md:block hidden md:bg-none "
+        >
+          <BsFilePlus className="w-4 h-4"></BsFilePlus>
+        </Link>
+        <Link
+          to="/new-product-form"
+          className="find-btn md:hidden md:bg-none bg-black bg-opacity-10"
+        >
+          <BsFilePlus className="w-4 h-4"></BsFilePlus>
         </Link>
       </div>
 
       <div className="">
         {loading ? (
           <div className="h-8 my-48 flex justify-center items-center">
-            <div className="bg-green-100 p-5 rounded-full flex space-x-3 duration-500">
-              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
-              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
-              <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+            <div className="bg-purple-900 p-5 rounded-full flex space-x-3 duration-500">
+              <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-100"></div>
+              <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-400"></div>
+              <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-600"></div>
             </div>
           </div>
         ) : (
