@@ -71,6 +71,7 @@ const EditProduct = () => {
     barcode,
     setBarcode,
   } = context;
+
   useEffect(() => {
     async function fetchProduct() {
       try {
@@ -124,6 +125,7 @@ const EditProduct = () => {
 
       setBarcode(products.barcode);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, products]);
 
   const Notice = () => {
