@@ -104,10 +104,10 @@ const ProductDetails = () => {
   if (loading) {
     return (
       <div className="h-8 my-48 flex justify-center items-center">
-        <div className="bg-amber-500 p-5 rounded-full flex space-x-3 duration-1000 ">
-          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-100"></div>
-          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-300"></div>
-          <div className="w-5 h-5 bg-red-500 rounded-full animate-bounce delay-600"></div>
+        <div className="bg-purple-900 p-5 rounded-full flex space-x-3 duration-500">
+          <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-100"></div>
+          <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-400"></div>
+          <div className="w-5 h-5 bg-purple-800 rounded-xl animate-bounce delay-600"></div>
         </div>
       </div>
     );

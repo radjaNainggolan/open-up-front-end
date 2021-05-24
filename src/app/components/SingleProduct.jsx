@@ -15,7 +15,7 @@ const SingleProduct = ({ key, data, loa, product }) => {
         <div className="bg-purple-900 bg-opacity-90  w-full rounded-b-lg text-white mt-2 flex justify-center items-center flex-col">
           <p className="font-semibold w-4/5 text-center mt-2">{product.name}</p>
           <p className="text-gray-400 text-xs my-2 w-10/12 text-center">
-            {product.briefDescription == "" ? (
+            {product.briefDescription === "" ? (
               <div>Ovaj proizvod nema kratak opis.</div>
             ) : (
               product.briefDescription
