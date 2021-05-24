@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const SingleProduct = ({ key, data, loa, product }) => {
   return (
     <Link key={key} to={`/product/${product.id}`}>
-      <div className="bg-white flex flex-col items-center justify-center w-64 rounded-lg mb-5 mx-10 md:mx-10 md:my-5">
-        <div className="rounded-t-2xl w-64 max-h-72 min-h-72 flex items-center justify-center">
+      <div className="bg-white flex flex-col items-center justify-center w-64 rounded-lg mb-5 mx-10 md:mx-10 md:mt-5 md:mb-10">
+        <div className="rounded-t-lg w-64 max-h-72 min-h-72 flex items-center justify-center">
           <img
             className="min-w-64 max-w-64 max-h-64 rounded-t-lg bg-white"
             src={product.images ? product.images[0] : null}
@@ -14,7 +14,7 @@ const SingleProduct = ({ key, data, loa, product }) => {
         </div>
         <div className="bg-purple-900 bg-opacity-90  w-full rounded-b-lg text-white mt-2 flex justify-center items-center flex-col">
           <p className="font-semibold w-4/5 text-center mt-2">{product.name}</p>
-          <p className="text-gray-400 text-sm my-2 w-10/12 text-center">
+          <p className="text-gray-400 text-xs my-2 w-10/12 text-center">
             {product.briefDescription}
           </p>
           <div className="flex mb-4 flex-row justify-center items-center">
