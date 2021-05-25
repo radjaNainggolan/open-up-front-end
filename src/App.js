@@ -12,6 +12,7 @@ import Contacts from "app/components/Contacts";
 import ProductPage from "app/components/ProductPage";
 import Home from "app/pages/Home";
 import ProductProvider from "app/components/ProductContext";
+import Proizvod from "app/components/Proizvod";
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -54,6 +55,9 @@ function App() {
             setIsAuthenticating={setIsAuthenticating}
           ></NavBar>
           <Switch>
+            <Route exact path="/proizvod">
+              <Proizvod />
+            </Route>
             <Route exact path="/">
               <Home />
             </Route>

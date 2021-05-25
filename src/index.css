@@ -58,6 +58,9 @@
     @apply shadow-lg transform hover:-translate-y-2 font-karla bg-gradient-to-br from-amber-400
     to-red-400 rounded-2xl  w-60 h-96 delay-100 duration-100 hover:ring-4 ring-2 ring-red-500;
   }
+  .input-resizable {
+    max-width: 200px;
+  }
 
   .paging {
     @apply justify-items-center bg-amber-500 rounded-xl px-2 ml-5 text-white font-karla font-semibold;
