@@ -9,7 +9,7 @@ import NavBar from "app/components/NavBar";
 import Search from "app/components/Search";
 import SignUp from "app/pages/SignUp";
 import Contacts from "app/components/Contacts";
-import ProductPage from "app/components/ProductPage";
+//import ProductPage from "app/components/ProductPage";
 import Home from "app/pages/Home";
 import ProductProvider from "app/components/ProductContext";
 import Proizvod from "app/components/Proizvod";
@@ -55,8 +55,10 @@ function App() {
             setIsAuthenticating={setIsAuthenticating}
           ></NavBar>
           <Switch>
-            <Route exact path="/proizvod">
-              <Proizvod />
+            <Route exact path="/product/:id">
+              <ProductProvider>
+                <Proizvod />
+              </ProductProvider>
             </Route>
             <Route exact path="/">
               <Home />
@@ -67,12 +69,12 @@ function App() {
                 setAuthenticationStatus={setAuthenticationStatus}
               ></Search>
             </Route>
-            <Route exact path="/product/:id">
+            {/* <Route exact path="/product/:id">
               <ProductPage
                 isAuthenticated={isAuthenticated}
                 setAuthenticationStatus={setAuthenticationStatus}
               ></ProductPage>
-            </Route>
+            </Route> */}
             <Route exact path="/new-product-form">
               <ProductProvider>
                 <AddProduct

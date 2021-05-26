@@ -7,7 +7,7 @@ const SingleProduct = ({ key, data, loa, product }) => {
       <div className="bg-purple-900 bg-opacity-90 flex flex-col items-center justify-center w-64 rounded-lg mb-5 mx-10 md:mx-10 md:mt-5 md:mb-10">
         <div className="bg-white rounded-t-lg w-64 max-h-72 min-h-72 flex items-center justify-center">
           <img
-            className="min-w-64 max-w-64 max-h-64 rounded-t-lg bg-white"
+            className="h-64 w-64 rounded-t-lg bg-white"
             src={product.images ? product.images[0] : null}
             alt="error"
           />
