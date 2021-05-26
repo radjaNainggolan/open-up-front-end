@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Proizvod = () => {
+  const [one, openOne] = useState(true);
+  const [two, openTwo] = useState(true);
+  const [three, openThree] = useState(true);
+  const [text, setText] = useState("");
   return (
     <div className="bg-white min-h-screen flex flex-col items-center justify-center">
       {/* slika + naslov */}
@@ -50,11 +54,19 @@ const Proizvod = () => {
             <input value="Italy" />
           </div>
           <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Main ingredients:</p>
-            <input
-              className="w-max h-max"
-              value="Sugar, palm oil, hazelnuts, cocoa solids, milk powder"
-            />
+            <p>
+              <strong>Solution with span:</strong>{" "}
+              <span
+                class="textarea"
+                role="textbox"
+                onChange={(e) => {
+                  setText(e.target.value);
+                }}
+                contenteditable
+              >
+                {text}
+              </span>
+            </p>
           </div>
           <div className="flex flex-row mb-3">
             <p className="font-bold mr-2">Place of origin:</p>
@@ -80,7 +92,12 @@ const Proizvod = () => {
       <div className="border-b border-l border-r w-96 py-3 px-5">
         <div className="flex flex-row justify-between items-center">
           <p>Nutrition ingredients</p>
-          <div className="text-gray-500">
+          <div
+            onClick={() => {
+              one ? openOne(false) : openOne(true);
+            }}
+            className="text-gray-500"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -96,13 +113,18 @@ const Proizvod = () => {
           </div>
         </div>
         {/* dropdown koji se otvara */}
-        <div className="hidden">aye</div>
+        <div className={`${one ? "" : "hidden"}`}>aye</div>
         {/* dropdown koji se otvara */}
       </div>
       {/* dropdown-1 */}
 
       {/* dropdown-2 */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div
+        onClick={() => {
+          two ? openTwo(false) : openTwo(true);
+        }}
+        className="border-b border-l border-r w-96 py-3 px-5"
+      >
         <div className="flex flex-row justify-between items-center">
           <p>Invention</p>
           <div className="text-gray-500">
@@ -127,7 +149,12 @@ const Proizvod = () => {
       {/* dropdown-2 */}
 
       {/* dropdown-3 */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div
+        onClick={() => {
+          three ? openThree(false) : openThree(true);
+        }}
+        className="border-b border-l border-r w-96 py-3 px-5"
+      >
         <div className="flex flex-row justify-between items-center">
           <p>Shelf life</p>
           <div className="text-gray-500">
