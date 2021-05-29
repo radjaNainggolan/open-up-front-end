@@ -6,7 +6,7 @@ import { SiGmail } from "react-icons/si";
 import { FaViber } from "react-icons/fa";
 const Contacts = () => {
   return (
-    <div className="bg-purple-600 rounded-t-md py-5 h-full w-full flex flex-row items-center px-4 space-x-20">
+    <div className=" bg-purple-600 rounded-t-md py-5 h-full w-full flex flex-col justify-center items-center md:flex-row md:items-center md:justify-start px-4 space-y-5 md:space-x-20">
       <div className="space-y-10 w-60 text-center">
         <p className="text-white font-karla">Logo</p>
         <div className="flex flex-row justify-between text-white">

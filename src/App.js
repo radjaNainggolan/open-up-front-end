@@ -13,6 +13,7 @@ import Contacts from "app/components/Contacts";
 import Home from "app/pages/Home";
 import ProductProvider from "app/components/ProductContext";
 import Proizvod from "app/components/Proizvod";
+import Rewards from "app/components/Rewards";
 /* TODO: 
          - Instead of passing authentication state to all components as a prop
           try integrating React ContextAPI.
@@ -68,6 +69,9 @@ function App() {
                 isAuthenticated={isAuthenticated}
                 setAuthenticationStatus={setAuthenticationStatus}
               ></Search>
+            </Route>
+            <Route exact path="/rewards">
+              <Rewards></Rewards>
             </Route>
             {/* <Route exact path="/product/:id">
               <ProductPage

@@ -6,6 +6,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import { getAllProducts, search } from "app/graphql/queries";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsFilePlus } from "react-icons/bs";
+import Tooltip from "@material-ui/core/Tooltip";
 const Search = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -41,7 +42,7 @@ const Search = () => {
   }
 
   const [currentPage, setCurrentPage] = useState(0);
-  const productsPerPage = 16;
+  const productsPerPage = 15;
   const indexOfLastProduct = currentPage * productsPerPage;
   let currentProducts = products.slice(
     indexOfLastProduct,
@@ -63,31 +64,41 @@ const Search = () => {
           className="my-3 md:w-60 outline-none text-black bg-white pl-2 py-1 rounded-md font-karla"
         />
 
-        <button
-          className="find-btn md:block hidden md:bg-none ml-2 mr-1"
-          onClick={searchProds}
-        >
-          <BiSearchAlt2></BiSearchAlt2>
-        </button>
-        <button
-          className="find-btn md:hidden md:bg-none bg-black bg-opacity-10 ml-2 mr-1"
-          onClick={searchProds}
-        >
-          <BiSearchAlt2></BiSearchAlt2>
-        </button>
+        <Tooltip title="Pretraga proizvoda po unijetom tesktu">
+          <button
+            className="find-btn md:block hidden md:bg-none ml-2 mr-1"
+            onClick={searchProds}
+          >
+            <BiSearchAlt2></BiSearchAlt2>
+          </button>
+        </Tooltip>
 
-        <Link
-          to="/new-product-form"
-          className="find-btn md:block hidden md:bg-none "
-        >
-          <BsFilePlus className="w-4 h-4"></BsFilePlus>
-        </Link>
-        <Link
-          to="/new-product-form"
-          className="find-btn md:hidden md:bg-none bg-black bg-opacity-10"
-        >
-          <BsFilePlus className="w-4 h-4"></BsFilePlus>
-        </Link>
+        <Tooltip title="Pretraga proizvoda po unijetom tesktu">
+          <button
+            className="find-btn md:hidden md:bg-none bg-black bg-opacity-10 ml-2 mr-1"
+            onClick={searchProds}
+          >
+            <BiSearchAlt2></BiSearchAlt2>
+          </button>
+        </Tooltip>
+
+        <Tooltip title="Forma za ubacivanje novog proizovda">
+          <Link
+            to="/new-product-form"
+            className="find-btn md:block hidden md:bg-none "
+          >
+            <BsFilePlus className="w-4 h-4"></BsFilePlus>
+          </Link>
+        </Tooltip>
+
+        <Tooltip title="Forma za ubacivanje novog proizvoda">
+          <Link
+            to="/new-product-form"
+            className="find-btn md:hidden md:bg-none bg-black bg-opacity-10"
+          >
+            <BsFilePlus className="w-4 h-4"></BsFilePlus>
+          </Link>
+        </Tooltip>
       </div>
 
       <div className="">
@@ -103,7 +114,7 @@ const Search = () => {
           <ProductsList data={currentProducts} loa={loading} />
         )}
       </div>
-      <div className="flex justify-items-center">
+      <div className="flex justify-center">
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
@@ -116,7 +127,7 @@ const Search = () => {
           nextClassName="paging "
           nextLinkClassName="outline-none"
           previousLinkClassName="outline-none"
-          activeClassName="paging"
+          activeClassName="paging bg-purple-900"
           activeLinkClassName="outline-none"
           pageClassName="hidden sm:block paging"
           pageLinkClassName="outline-none"

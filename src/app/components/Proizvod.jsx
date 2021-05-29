@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // required impo
 import { useParams } from "react-router";
 //import { Link } from "react-router-dom";
 import { getProduct } from "app/graphql/queries";
-//import { updateProduct } from "app/graphql/mutations";
+import { updateProduct } from "app/graphql/mutations";
 import { ProductContext } from "app/components/ProductContext";
 
 const Proizvod = () => {
@@ -160,10 +160,10 @@ const Proizvod = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, product]);
 
-  /*const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const product = {
+    const Product = {
       id: id,
       barcode: barcode,
       briefDescription: briefDescription,
@@ -202,16 +202,15 @@ const Proizvod = () => {
       status: product.status,
     };
 
-    API.graphql(graphqlOperation(updateProduct, { input: product }))
+    API.graphql(graphqlOperation(updateProduct, { input: Product }))
       .then((res) => {
         alert("shit");
         //history.push(`/product/${id}`, { success: true });
       })
       .catch((err) => {
         alert(JSON.stringify(err, null, 4));
-        
       });
-  };*/
+  };
 
   if (loading) {
     return (
@@ -537,7 +536,7 @@ const Proizvod = () => {
               />
             </div>
             <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Iznos popusta:</p>
+              <p className="font-bold mr-2">Iznos popusta ({"\u20AC"}):</p>
               <input
                 onChange={(e) => setDiscountAmount(e.target.value)}
                 value={discountAmount}
@@ -560,7 +559,7 @@ const Proizvod = () => {
               />
             </div>
             <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Cijena sa popustom:</p>
+              <p className="font-bold mr-2">Cijena sa popustom ({"\u20AC"}):</p>
               <input
                 type="number"
                 min="0"
@@ -570,7 +569,7 @@ const Proizvod = () => {
               />
             </div>
             <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Regularna cijena:</p>
+              <p className="font-bold mr-2">Regularna cijena ({"\u20AC"}):</p>
               <input
                 type="number"
                 min="0"
@@ -586,9 +585,13 @@ const Proizvod = () => {
       {/* dropdown-3 */}
 
       {/* dropdown-4 */}
-      <div className="border-b border-l border-r rounded-b-lg w-96 py-3 px-5 text-sm">
-        {" "}
-        neki link ili nesto?{" "}
+      <div className="border-b border-l border-r rounded-b-lg w-96 py-3 px-5 text-sm flex justify-center">
+        <button
+          className="px-2 text-xl border rounded-md hover:bg-purple-800 active:outline-none focus:outline-none"
+          onClick={handleSubmit}
+        >
+          Prihavati
+        </button>
       </div>
       {/* dropdown-4 */}
     </div>

@@ -2,8 +2,8 @@ import SingleProduct from "app/components/SingleProduct";
 
 const ProductsList = ({ data, loa }) => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="flex md:flex-wrap flex-wrap justify-center w-full md:w-11/12">
+    <div className="my-20 grid justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-40 gap-y-40 my-16">
         {data.map((product) => (
           <div key={product.id} className="">
             <SingleProduct
