@@ -568,7 +568,7 @@ const Proizvod = () => {
       {/* dropdown-4 */}
       <div className="border-b border-l border-r rounded-b-lg w-96 py-3 px-5 text-sm flex justify-center">
         <button
-          className="px-2 text-xl border rounded-md hover:bg-purple-800 active:outline-none focus:outline-none"
+          className="hover:bg-black bg-black bg-opacity-5 focus:outline-none hover:bg-opacity-10 py-2 px-5 rounded-md"
           onClick={handleSubmit}
         >
           Prihvati
