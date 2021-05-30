@@ -22,7 +22,7 @@ const SingleProduct = ({ key, data, loa, product }) => {
             />
           </div>
           <div className="bg-purple-900 bg-opacity-90  w-full rounded-b-lg text-white mt-2 flex justify-center items-center flex-col">
-            <p className="font-semibold w-4/5 text-center mt-2">
+            <p className="font-semibold w-4/5 text-center mb-2 mt-2">
               <span>{product.name}</span>
             </p>
             {/* <p className="text-gray-400 text-xs my-2 w-10/12 text-center">

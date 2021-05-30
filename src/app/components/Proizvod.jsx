@@ -8,6 +8,8 @@ import { useParams } from "react-router";
 import { getProduct } from "app/graphql/queries";
 import { updateProduct } from "app/graphql/mutations";
 import { ProductContext } from "app/components/ProductContext";
+import TextareaField from "./TextareaField";
+import Input from "./Input";
 
 const Proizvod = () => {
   const [one, openOne] = useState(false);
@@ -32,7 +34,7 @@ const Proizvod = () => {
       <Carousel
         showThumbs={false}
         showStatus={false}
-        className="rounded-xl my-2 ring-purple-700 ring-4 w-80 h-80"
+        className="rounded-xl my-2 w-80 h-80"
       >
         {product.images.map((image) => (
           <img key={image} src={image} alt="error" className="my-5 w-72 h-72" />
@@ -230,7 +232,7 @@ const Proizvod = () => {
       <div className="border rounded-t-lg w-96 py-5 px-4">
         {/* slika */}
         <div className="flex items-center justify-center">
-          <RenderImageSlider></RenderImageSlider>
+          <RenderImageSlider />
         </div>
         {/* slika */}
 
@@ -259,13 +261,8 @@ const Proizvod = () => {
         {/* brief desc */}
         {/* visible atributi */}
         <div className="text-sm mt-2">
-          <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Kategorija:</p>
-            <input
-              onChange={(e) => setCategory(e.target.value)}
-              value={category}
-            />
-          </div>
+          <Input label="Kategorija:" value={category} setValue={setCategory} />
+
           <div className="flex flex-row mb-3">
             <p className="font-bold mr-2">Nutri score:</p>
             <select
@@ -281,34 +278,14 @@ const Proizvod = () => {
               <option value="E">E</option>
             </select>
           </div>
-          <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Zemlja porijekla:</p>
-            <input
-              onChange={(e) => setConutryOfOrigin(e.target.value)}
-              value={countryOfOrigin}
-            />
-          </div>
-          <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Uvoznik:</p>
-            <input
-              onChange={(e) => setImports(e.target.value)}
-              value={imports}
-            />
-          </div>
-          <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Proizvodjač:</p>
-            <input
-              onChange={(e) => setProducer(e.target.value)}
-              value={producer}
-            />
-          </div>
-          <div className="flex flex-row mb-3">
-            <p className="font-bold mr-2">Barcode:</p>
-            <input
-              onChange={(e) => setBarcode(e.target.value)}
-              value={barcode}
-            />
-          </div>
+          <Input
+            label="Zemlja porijekla"
+            value={countryOfOrigin}
+            setValue={setConutryOfOrigin}
+          />
+          <Input label="Uvoznik" value={imports} setValue={setImports} />
+          <Input label="Proizvodjač" value={producer} setValue={setProducer} />
+          <Input label="Barcode" value={barcode} setValue={setBarcode} />
         </div>
       </div>
       {/* desc main container */}
@@ -340,17 +317,16 @@ const Proizvod = () => {
         {/* dropdown koji se otvara */}
         <div className={`${one ? "" : "hidden"}`}>
           <div className="text-sm mt-2">
-            <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Energija (kJ/kcal):</p>
-              <input
-                type="text"
-                onChange={(e) => setEnergy(e.target.value)}
-                value={energy}
-              />
-            </div>
+            <Input
+              label="Energija (kJ/kcal):"
+              value={energy}
+              setValue={setEnergy}
+            />
+
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Masti (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -361,6 +337,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Zasićene masti (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -371,6 +348,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Proteini (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -381,6 +359,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Ugljeni hidrati (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -391,6 +370,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Vlakna (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -399,8 +379,9 @@ const Proizvod = () => {
               />
             </div>
             <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Sećer (g):</p>
+              <p className="font-bold mr-2">Šećer (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -411,6 +392,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">So (g):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -451,49 +433,42 @@ const Proizvod = () => {
         {/* dropdown koji se otvara */}
         <div className={`${two ? "" : "hidden"}`}>
           <div className="text-sm mt-2">
-            <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Dodatne informacije:</p>
-              <textarea
-                onChange={(e) => setAdditionalInformation(e.target.value)}
-                value={additionalInformation}
-              />
-            </div>
-            <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Alkohol:</p>
-              <input
-                onChange={(e) => setAlcohol(e.target.value)}
-                value={alcohol}
-              />
-            </div>
-            <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Alergeni:</p>
-              <input
-                onChange={(e) => setAllergens(e.target.value)}
-                value={allergens}
-              />
-            </div>
+            <TextareaField
+              label="Dodatne informacije"
+              value={additionalInformation}
+              setValue={setAdditionalInformation}
+            />
+            <Input label="Alkohol" value={alcohol} setValue={setAlcohol} />
+            <Input label="Alergeni" value={allergens} setValue={setAllergens} />
+
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Datum isteka roka:</p>
               <input
+                className="focus:outline-none"
                 type="date"
                 onChange={(e) => setExpiryDate(e.target.value)}
                 value={expiryDate}
               />
             </div>
-            <div className="flex flex-row mb-3">
+
+            <TextareaField
+              label="Sastojci"
+              value={ingredients}
+              setValue={setIngredients}
+            />
+            {/* <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Sastojci:</p>
+              <p onClick={}>{ingredients}</p>
               <textarea
                 onChange={(e) => setIngredients(e.target.value)}
                 value={ingredients}
               />
-            </div>
-            <div className="flex flex-row mb-3">
-              <p className="font-bold mr-2">Održavanje:</p>
-              <input
-                onChange={(e) => setMaintenance(e.target.value)}
-                value={maintenance}
-              />
-            </div>
+            </div> */}
+            <Input
+              label="Održavanje"
+              value={maintenance}
+              setValue={setMaintenance}
+            />
           </div>
         </div>
         {/* dropdown koji se otvara */}
@@ -530,6 +505,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Podaci od:</p>
               <input
+                className="focus:outline-none"
                 type="date"
                 onChange={(e) => setDate(e.target.value)}
                 value={date}
@@ -538,6 +514,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Iznos popusta ({"\u20AC"}):</p>
               <input
+                className="focus:outline-none"
                 onChange={(e) => setDiscountAmount(e.target.value)}
                 value={discountAmount}
               />
@@ -545,6 +522,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Datum početka popusta:</p>
               <input
+                className="focus:outline-none"
                 type="date"
                 onChange={(e) => setDiscountStartDate(e.target.value)}
                 value={discountStartDate}
@@ -553,6 +531,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Datum kraja popusta:</p>
               <input
+                className="focus:outline-none"
                 type="date"
                 onChange={(e) => setDiscountEndDate(e.target.value)}
                 value={discountEndDate}
@@ -561,6 +540,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Cijena sa popustom ({"\u20AC"}):</p>
               <input
+                className="focus:outline-none"
                 type="number"
                 min="0"
                 step="0.01"
@@ -571,6 +551,7 @@ const Proizvod = () => {
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Regularna cijena ({"\u20AC"}):</p>
               <input
+                className="focus:outline-none "
                 type="number"
                 min="0"
                 step="0.01"
@@ -590,7 +571,7 @@ const Proizvod = () => {
           className="px-2 text-xl border rounded-md hover:bg-purple-800 active:outline-none focus:outline-none"
           onClick={handleSubmit}
         >
-          Prihavati
+          Prihvati
         </button>
       </div>
       {/* dropdown-4 */}
