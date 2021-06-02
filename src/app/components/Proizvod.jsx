@@ -227,9 +227,12 @@ const Proizvod = () => {
   }
 
   return (
-    <div className="bg-white min-h-screen flex flex-col items-center justify-center">
+    <div
+      style={{ background: "#6F5D83" }}
+      className="my-10 bg-white min-h-screen flex flex-col items-center justify-center"
+    >
       {/* slika + naslov */}
-      <div className="border rounded-t-lg w-96 py-5 px-4">
+      <div className="bg-white border rounded-t-lg w-96 py-5 px-4">
         {/* slika */}
         <div className="flex items-center justify-center">
           <RenderImageSlider />
@@ -255,7 +258,7 @@ const Proizvod = () => {
         {/* slika + naslov */}
       </div>
       {/* desc main container */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div className="border-b bg-white border-l border-r w-96 py-3 px-5">
         {/* brief desc */}
         <p className="text-gray-600 leading-6 text-sm">{briefDescription}</p>
         {/* brief desc */}
@@ -291,7 +294,7 @@ const Proizvod = () => {
       {/* desc main container */}
 
       {/* dropdown-1 */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div className="bg-white border-b border-l border-r w-96 py-3 px-5">
         <div className="flex flex-row justify-between items-center">
           <p>Nutritivne vrijednosti (na 100g)</p>
           <div
@@ -315,7 +318,7 @@ const Proizvod = () => {
           </div>
         </div>
         {/* dropdown koji se otvara */}
-        <div className={`${one ? "" : "hidden"}`}>
+        <div className={`${one ? "bg-white" : "hidden"}`}>
           <div className="text-sm mt-2">
             <Input
               label="Energija (kJ/kcal):"
@@ -334,7 +337,7 @@ const Proizvod = () => {
                 value={fats}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Zasićene masti (g):</p>
               <input
                 className="focus:outline-none"
@@ -345,7 +348,7 @@ const Proizvod = () => {
                 value={saturatedFats}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Proteini (g):</p>
               <input
                 className="focus:outline-none"
@@ -356,7 +359,7 @@ const Proizvod = () => {
                 value={proteins}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Ugljeni hidrati (g):</p>
               <input
                 className="focus:outline-none"
@@ -367,7 +370,7 @@ const Proizvod = () => {
                 value={carbs}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Vlakna (g):</p>
               <input
                 className="focus:outline-none"
@@ -378,7 +381,7 @@ const Proizvod = () => {
                 value={fibers}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Šećer (g):</p>
               <input
                 className="focus:outline-none"
@@ -389,7 +392,7 @@ const Proizvod = () => {
                 value={sugar}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">So (g):</p>
               <input
                 className="focus:outline-none"
@@ -407,7 +410,7 @@ const Proizvod = () => {
       {/* dropdown-1 */}
 
       {/* dropdown-2 */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div className="bg-white border-b border-l border-r w-96 py-3 px-5">
         <div className="flex flex-row justify-between items-center">
           <p>Detaljan opis</p>
           <div
@@ -432,7 +435,7 @@ const Proizvod = () => {
         </div>
         {/* dropdown koji se otvara */}
         <div className={`${two ? "" : "hidden"}`}>
-          <div className="text-sm mt-2">
+          <div className="bg-white text-sm mt-2">
             <TextareaField
               label="Dodatne informacije"
               value={additionalInformation}
@@ -476,7 +479,7 @@ const Proizvod = () => {
       {/* dropdown-2 */}
 
       {/* dropdown-3 */}
-      <div className="border-b border-l border-r w-96 py-3 px-5">
+      <div className="bg-white border-b border-l border-r w-96 py-3 px-5">
         <div className="flex flex-row justify-between items-center">
           <p>Cijena</p>
           <div
@@ -501,7 +504,7 @@ const Proizvod = () => {
         </div>
         {/* dropdown koji se otvara */}
         <div className={`${three ? "" : "hidden"}`}>
-          <div className="text-sm mt-2">
+          <div className="bg-white text-sm mt-2">
             <div className="flex flex-row mb-3">
               <p className="font-bold mr-2">Podaci od:</p>
               <input
@@ -548,7 +551,7 @@ const Proizvod = () => {
                 value={discountPrice}
               />
             </div>
-            <div className="flex flex-row mb-3">
+            <div className="bg-white flex flex-row mb-3">
               <p className="font-bold mr-2">Regularna cijena ({"\u20AC"}):</p>
               <input
                 className="focus:outline-none "
@@ -566,7 +569,7 @@ const Proizvod = () => {
       {/* dropdown-3 */}
 
       {/* dropdown-4 */}
-      <div className="border-b border-l border-r rounded-b-lg w-96 py-3 px-5 text-sm flex justify-center">
+      <div className="bg-white border-b border-l border-r rounded-b-lg w-96 py-3 px-5 text-sm flex justify-center">
         <button
           className="hover:bg-black bg-black bg-opacity-5 focus:outline-none hover:bg-opacity-10 py-2 px-5 rounded-md"
           onClick={handleSubmit}
