@@ -27,7 +27,10 @@ const NavBar = ({
       className="md:flex  md:items-center md:justify-center text-gray-50 font font-karla"
     >
       <div className="md:flex hidden relative z-10 flex flex-row items-baseline justify-between w-4/5 py-4">
-        <Link to="/" className="text-2xl font-semibold hover:text-gray-200">
+        <Link
+          to="/"
+          className="text-2xl font-semibold text-gray-200 hover:text-white"
+        >
           🥫&nbsp;Foodstock
         </Link>
         <div className="flex flex-row text-lg">

@@ -40,7 +40,7 @@ const Home = () => {
       <div className="md:hidden min-h-screen flex flex-col justify-center items-center">
         <img
           className="absolute z-0 min-h-screen min-w-screen opacity-20"
-          src="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80"
+          src="https://images.unsplash.com/photo-1586090643003-b2bfb4fbd833?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
           alt="grocery store"
         />
         <div className="absolute z-10 flex flex-col items-center justify-center text-center">
